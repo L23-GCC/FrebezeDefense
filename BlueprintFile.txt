@@ -1,0 +1,13 @@
+String Names of Available Towers
+
+int numEnemies Wave 1 Enemies
+int numEnemies Wave 2 Enemies
+int numEnemies Wave 3 Enemies
+...
+int numEnemies Wave 10 Enemies
+width
+height
+++++++++++
+S........F
+..........
+++++++++++
