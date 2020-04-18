@@ -1,8 +1,6 @@
 
 public class GroundEnemies extends Enemies{
-	public GroundEnemies(int posX, int posY) {
-		this.posX = posX;
-		this.posY = posY;
+	public GroundEnemies() {
 	}
 
 	@Override

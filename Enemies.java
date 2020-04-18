@@ -46,4 +46,16 @@ public abstract class Enemies {
 				+ "\nHealth: " + health + "\nFast: " + fast);
 		return data.toString();
 	}
+
+	public void setYPos(int y) {
+		posY = y;
+	}
+	
+	public void setXPos(int x) {
+		posX = x;
+	}
+	
+	public String getName() {
+		return name;
+	}
 }
