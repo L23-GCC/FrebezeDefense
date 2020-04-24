@@ -52,13 +52,13 @@ public class Board {
 						&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
 						&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
 				{
-					if (towersBuilt.get(i).getCurDelay() == 0) {
+					if (towersBuilt.get(j).getCurDelay() == 0) {
 						onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
-						towersBuilt.get(i).startDelay();
+						towersBuilt.get(j).startDelay();
 						break;
 					}
 				}
-				towersBuilt.get(i).incCurDelay();
+				towersBuilt.get(j).incCurDelay();
 			}
 		}
 		for (int i = 0; i < onBoardFoes.size(); i++) {
