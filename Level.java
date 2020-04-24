@@ -97,7 +97,7 @@ public class Level {
 		char choice = scan.next().charAt(0);
 
 		while (choice == 'Y') {
-			System.out.println(buildableTowers);
+			System.out.println(toString());
 			System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
 			int chosenTwr = scan.nextInt();
 			int x = scan.nextInt();

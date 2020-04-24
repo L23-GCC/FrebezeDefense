@@ -5,7 +5,7 @@ public class IbuprofenTower extends GroundTowers{
 		cost = 10;
 		range = 3;
 		damage = 5;
-		rateOfFire = 4;
+		fireDelay = 4;
 		name = "Ibuprofen Tower";
 	}
 	
@@ -37,7 +37,7 @@ public class IbuprofenTower extends GroundTowers{
 	
 	public void upgradeROF(int tier) {
 		if (tier == 1) {
-			rateOfFire++;
+			fireDelay--;
 		}
 	}
 }
