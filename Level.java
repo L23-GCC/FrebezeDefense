@@ -8,9 +8,9 @@ public class Level {
 	private final int numWaves = 10;
 	private int curWave;
 	private Board startingBoard;
-	private ArrayList<String> buildableTowers;
-	private ArrayList<Integer> lvlEnemies;
-	private int[] enemiesPerWave;
+	private ArrayList<String> buildableTowers; //Towers available to be built 
+	private ArrayList<Integer> lvlEnemies; //Stores all the enemies
+	private int[] enemiesPerWave; //Stores how many enemies are to be released from lvlEnemies per wave
 	private boolean didYouWin = false;
 	
 	public Level(String fileName) throws FileNotFoundException {
@@ -50,7 +50,7 @@ public class Level {
 	}
 	
 	public void runWave() throws InterruptedException {
-		chooseTower();
+		updateTowers();
 		fillWaveEnemies();
 		
 		boolean keepLoop = true;
@@ -63,9 +63,9 @@ public class Level {
 			if (count % 2 == 0) {
 				startingBoard.spawnEnemy();
 			}
-			System.out.println(startingBoard.toString());
 			startingBoard.updateBoard();
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(count - 1); //Used to see how many iterations the game runs
 			System.out.println(startingBoard.toString());
 			if (startingBoard.getPlayerHealth() <= 0) {
 				keepLoop = false;
@@ -88,44 +88,81 @@ public class Level {
 			curWave++;
 			System.out.println("Wave Complete!");
 		}
-		System.out.println(printBoard());
 	}
 	
-	private void chooseTower() {
+	private void updateTowers() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Do you want to build a tower (Y/N)");
+		System.out.println(printBoard());
+		System.out.println("Health: " + startingBoard.getPlayerHealth());
+		System.out.println("Toilet Paper: " + startingBoard.getToiletPaper());
+		System.out.println("Do you want to build/upgrade a tower (Y/N)");
 		char choice = scan.next().charAt(0);
 
 		while (choice == 'Y') {
-			System.out.println(toString());
+			System.out.println(buildableTowers);
 			System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
 			int chosenTwr = scan.nextInt();
 			int x = scan.nextInt();
 			int y = scan.nextInt();
 			try {
 				if (buildableTowers.get(chosenTwr).equals("IbuprofenTower")) {
-					startingBoard.buildTower(new IbuprofenTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new IbuprofenTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 				else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
-					startingBoard.buildTower(new CloroxTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new CloroxTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 				else if (buildableTowers.get(chosenTwr).equals("GermXTower")) {
-					startingBoard.buildTower(new GermXTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new GermXTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 				else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
-					startingBoard.buildTower(new HandSanitizerTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new HandSanitizerTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 				else if (buildableTowers.get(chosenTwr).equals("TumsTower")) {
-					startingBoard.buildTower(new TumsTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new TumsTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 				else if (buildableTowers.get(chosenTwr).equals("VaccineTower")) {
-					startingBoard.buildTower(new VaccineTower(x, y));
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new VaccineTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
 				}
 			}
 			catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-			System.out.println("Do you want to build a tower (Y/N)");
+			if (choice == 'Y') {
+				System.out.println(printBoard());
+			}
+			System.out.println("Health: " + startingBoard.getPlayerHealth());
+			System.out.println("Toilet Paper: " + startingBoard.getToiletPaper());
+			System.out.println("Do you want to build/upgrade a tower (Y/N)");
 			choice = scan.next().charAt(0);
 		}
 

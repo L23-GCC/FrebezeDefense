@@ -8,7 +8,7 @@ public class GermXTower extends GroundTowers {
 		cost = 15;
 		range = 2;
 		damage = 0;
-		rateOfFire = 3;
+		fireDelay = 3;
 		name = "GermX Tower";
 	}
 
