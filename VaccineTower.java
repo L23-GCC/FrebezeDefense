@@ -10,7 +10,7 @@ public class VaccineTower extends GroundTowers{
 		cost = 15;
 		range = 1;
 		damage = 5;
-		rateOfFire = 4;
+		fireDelay = 4;
 		name = "Vaccine Tower";
 		slowed = true;
 		

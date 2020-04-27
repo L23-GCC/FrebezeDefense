@@ -7,7 +7,7 @@ public class TumsTower extends GroundTowers {
 		cost = 25;
 		range = 3;
 		damage = 15;
-		rateOfFire = 3;
+		fireDelay = 3;
 		name = "Tums Tower";
 	}
 
