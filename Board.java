@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Board {
 	private char[][] board;
+	private char[][] boardTemplate;
 	private int playerHealth;
 	private int toiletPaper;
 	private ArrayList<Towers> towersBuilt;
@@ -30,6 +31,7 @@ public class Board {
 					finish = j;
 				}
 				board[i][j] = line.charAt(i);
+				boardTemplate[i][j] = line.charAt(i);
 			}
 		}
 		
@@ -38,6 +40,8 @@ public class Board {
 		towersBuilt = new ArrayList<>();
 		playerHealth = 50;
 		toiletPaper = 25;
+		
+		mapScan.close();
 	}
 	
 	/**
@@ -62,8 +66,13 @@ public class Board {
 			}
 		}
 		for (int i = 0; i < onBoardFoes.size(); i++) {
-			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = '.';
-			onBoardFoes.get(i).move();
+			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = boardTemplate[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()];
+			if (onBoardFoes.get(i).getAir()) {
+				onBoardFoes.get(i).move();
+			}
+			else {
+				moveEnemy(onBoardFoes.get(i));
+			}
 			
 			if (onBoardFoes.get(i).isDie()) {
 				toiletPaper += onBoardFoes.get(i).getWorth();
@@ -86,6 +95,7 @@ public class Board {
 			throw new Exception("You're too broke");
 		}
 		board[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
+		boardTemplate[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
 		toiletPaper -= tower.getCost();
 		towersBuilt.add(tower);
 		
@@ -128,5 +138,9 @@ public class Board {
 	
 	public ArrayList<Enemies> getOnBoardFoes(){
 		return onBoardFoes;
+	}
+	
+	private void moveEnemy(Enemies E) {
+		
 	}
 }
