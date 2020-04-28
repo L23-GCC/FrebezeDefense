@@ -6,6 +6,7 @@ public class IbuprofenTower extends GroundTowers{
 		range = 3;
 		damage = 5;
 		fireDelay = 4;
+		upgradeLevel = 0;
 		name = "Ibuprofen Tower";
 	}
 	
@@ -15,29 +16,26 @@ public class IbuprofenTower extends GroundTowers{
 	//Upgrade 2: Increases range.
 	//Upgrade 3: Increases ROF and damage.
 	//How cost works TBD
-	public void upgradeRange(int tier) {
-		if (tier == 1) {
-			range++;
+	@Override
+	public void upgrade() {
+		super.upgrade();
+		
+		if (upgradeLevel == 1) {
+			damage = 8;
+			range = 4;
+			cost = 8;
 		}
 		
-		if (tier == 2) {
-			range++;
-		}	
-	}
-	
-	public void upgradeDamage(int tier) {
-		if (tier == 1) {
-			damage += 2;
+		if (upgradeLevel == 2) {
+			range = 5;
+			cost = 6;
 		}
 		
-		if (tier == 2) {
-			damage += 3;
+		if (upgradeLevel == 3) {
+			damage = 10;
+			fireDelay = 3;
+			cost = 10;
 		}
 	}
 	
-	public void upgradeROF(int tier) {
-		if (tier == 1) {
-			fireDelay--;
-		}
-	}
 }

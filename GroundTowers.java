@@ -5,4 +5,14 @@ public class GroundTowers extends Towers{
 		this.posX = posX;
 		this.posY = posY;
 	}
+
+	@Override
+	public void upgrade() {
+		upgradeLevel++;
+	}
+	
+	@Override
+	public void deUpgrade() {
+		upgradeLevel--;
+	}
 }

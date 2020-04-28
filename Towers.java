@@ -6,8 +6,9 @@ public abstract class Towers {
 	protected int posX;
 	protected int posY;
 	protected int fireDelay;
-	protected String name;
 	protected int curDelay = 0;
+	protected int upgradeLevel;
+	protected String name;
 	
 	public int getDmg() {
 		return damage;
@@ -45,6 +46,7 @@ public abstract class Towers {
 		if (curDelay == fireDelay) {
 			curDelay = 0;
 		}
+		
 		else if (curDelay != 0) {
 			curDelay++;
 		}
@@ -54,11 +56,19 @@ public abstract class Towers {
 		curDelay++;
 	}
 	
+	public int getUpgradeLevel() {
+		return upgradeLevel;
+	}
+	
+	public abstract void upgrade();
+	
+	public abstract void deUpgrade();
+	
 	public String toString() {
 		StringBuilder data = new StringBuilder();
 		data.append("Type: " + name + "\nCost: " + cost
 				+ "\nDamage: " + damage + "\nRange: " + range
-				+ "\nRoF: " + fireDelay);
+				+ "\nFireDelay: " + fireDelay);
 		return data.toString();
 	}
 }
