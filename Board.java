@@ -89,6 +89,7 @@ public class Board {
 		toiletPaper -= tower.getCost();
 		towersBuilt.add(tower);
 		
+		System.out.println(tower.getName() + " successfully built!");
 	}
 	
 	public void addEnemy(Enemies foe) {
@@ -129,4 +130,45 @@ public class Board {
 	public ArrayList<Enemies> getOnBoardFoes(){
 		return onBoardFoes;
 	}
+	
+	public int getToiletPaper() {
+		return toiletPaper;
+	}
+	
+	public char getBoardIndex(int x, int y) {
+		return board[x][y];
+	}
+	
+	public void upgradeTower(int x, int y) throws Exception {
+		for (int i = 0; i < towersBuilt.size(); i++) {
+			if (towersBuilt.get(i).getPosX() == x 
+				&& towersBuilt.get(i).getPosY() == y) {
+				towersBuilt.get(i).upgrade();
+				if (towersBuilt.get(i).getCost() > toiletPaper) {
+					towersBuilt.get(i).deUpgrade();
+					throw new Exception ("You're too broke.");
+				}
+				toiletPaper -= towersBuilt.get(i).getCost();
+				System.out.println(towersBuilt.get(i).getName() + " successfully upgraded!");
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
