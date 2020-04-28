@@ -7,6 +7,7 @@ public abstract class Enemies {
 	protected int worth;
 	protected String name;
 	protected boolean air;
+	protected char direction = 'R';
 	
 	public void move() {
 		if(!fast) {
@@ -69,5 +70,13 @@ public abstract class Enemies {
 	
 	public boolean getAir() {
 		return air;
+	}
+	
+	public char getDirection() {
+		return direction;
+	}
+	
+	public void setDirection(char c) {
+		direction = c;
 	}
 }
