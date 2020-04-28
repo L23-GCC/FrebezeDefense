@@ -1,0 +1,14 @@
+
+public class VitaminDTower extends AirTowers{
+	
+	public VitaminDTower(int posX, int posY) {
+		super(posX, posY);
+		cost = 22;
+		range = 2;
+		damage = 10;
+		fireDelay = 4;
+		name = "Vitamin D Tower";
+		chain = true;
+	}
+
+}

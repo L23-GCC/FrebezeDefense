@@ -9,6 +9,7 @@ public class HandSanitizerTower extends GroundTowers {
 		fireDelay = 6;
 		upgradeLevel = 0;
 		name = "Hand Sanitizer Tower";
+		single = true;
 	}
 	
 //	@Override

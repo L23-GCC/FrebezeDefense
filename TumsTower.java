@@ -9,6 +9,7 @@ public class TumsTower extends GroundTowers {
 		damage = 15;
 		fireDelay = 3;
 		name = "Tums Tower";
+		single = true;
 	}
 
 }
