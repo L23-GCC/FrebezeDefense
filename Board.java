@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Board {
 	private char[][] board;
@@ -137,11 +138,18 @@ public class Board {
 		onBoardFoes.add(foes.get(0));
 		onBoardFoes.get(onBoardFoes.size() - 1).setXPos(0);
 		
-		if (onBoardFoes.get(onBoardFoes.size() - 1).getSpeed()) {
-			onBoardFoes.get(onBoardFoes.size() - 1).setYPos(start + 1);
+		if (!onBoardFoes.get(onBoardFoes.size() - 1).getAir()) {
+			if (onBoardFoes.get(onBoardFoes.size() - 1).getSpeed()) {
+				onBoardFoes.get(onBoardFoes.size() - 1).setYPos(start + 1);
+			}
+			else {
+				onBoardFoes.get(onBoardFoes.size() - 1).setYPos(start);
+			}
 		}
 		else {
-			onBoardFoes.get(onBoardFoes.size() - 1).setYPos(start);
+			Random rand = new Random();
+			int y = rand.nextInt(height - 1);
+			onBoardFoes.get(onBoardFoes.size() - 1).setYPos(y);
 		}
 		foes.remove(0);
 	}
