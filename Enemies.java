@@ -6,8 +6,17 @@ public abstract class Enemies {
 	protected boolean fast;
 	protected int worth;
 	protected String name;
+	protected boolean air;
+	protected char direction = 'R';
 	
-	public abstract void move();
+	public void move() {
+		if(!fast) {
+			posX += 1;
+		}
+		else {
+			posX += 2;
+		}
+	}
 	
 	public void takeDamage(int dmg) {
 		health -= dmg;
@@ -57,5 +66,17 @@ public abstract class Enemies {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public boolean getAir() {
+		return air;
+	}
+	
+	public char getDirection() {
+		return direction;
+	}
+	
+	public void setDirection(char c) {
+		direction = c;
 	}
 }
