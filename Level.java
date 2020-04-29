@@ -72,7 +72,7 @@ public class Level {
 				hasLost = true;
 			}
 			
-			if (startingBoard.getOnBoardFoes().size() == 0) {
+			if ((startingBoard.getOnBoardFoes().size() == 0) && startingBoard.getFoes().size() == 0) {
 				keepLoop = false;
 			}
 			count++;
@@ -105,33 +105,10 @@ public class Level {
 			int x = scan.nextInt();
 			int y = scan.nextInt();
 			try {
+				//Ground Towers:
 				if (buildableTowers.get(chosenTwr).equals("IbuprofenTower")) {
 					if (startingBoard.getBoardIndex(x, y) == '+') {
 						startingBoard.buildTower(new IbuprofenTower(x, y));
-					}
-					else {
-						startingBoard.upgradeTower(x, y);
-					}
-				}
-				else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
-					if (startingBoard.getBoardIndex(x, y) == '+') {
-						startingBoard.buildTower(new CloroxTower(x, y));
-					}
-					else {
-						startingBoard.upgradeTower(x, y);
-					}
-				}
-				else if (buildableTowers.get(chosenTwr).equals("GermXTower")) {
-					if (startingBoard.getBoardIndex(x, y) == '+') {
-						startingBoard.buildTower(new GermXTower(x, y));
-					}
-					else {
-						startingBoard.upgradeTower(x, y);
-					}
-				}
-				else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
-					if (startingBoard.getBoardIndex(x, y) == '+') {
-						startingBoard.buildTower(new HandSanitizerTower(x, y));
 					}
 					else {
 						startingBoard.upgradeTower(x, y);
@@ -145,9 +122,75 @@ public class Level {
 						startingBoard.upgradeTower(x, y);
 					}
 				}
+				else if (buildableTowers.get(chosenTwr).equals("VitaminCTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new VitaminCTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new CloroxTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new HandSanitizerTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				//Air Towers:
+				else if (buildableTowers.get(chosenTwr).equals("VitaminB12Tower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new VitaminB12Tower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				else if (buildableTowers.get(chosenTwr).equals("AlkaSeltzerTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new AlkaSeltzerTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				else if (buildableTowers.get(chosenTwr).equals("VitaminDTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new VitaminDTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				else if (buildableTowers.get(chosenTwr).equals("ProbioticTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new ProbioticTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
 				else if (buildableTowers.get(chosenTwr).equals("VaccineTower")) {
 					if (startingBoard.getBoardIndex(x, y) == '+') {
 						startingBoard.buildTower(new VaccineTower(x, y));
+					}
+					else {
+						startingBoard.upgradeTower(x, y);
+					}
+				}
+				//Hybrid Towers
+				else if (buildableTowers.get(chosenTwr).equals("FrebrezeTower")) {
+					if (startingBoard.getBoardIndex(x, y) == '+') {
+						startingBoard.buildTower(new FrebrezeTower(x, y));
 					}
 					else {
 						startingBoard.upgradeTower(x, y);
