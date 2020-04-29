@@ -6,7 +6,6 @@ public class EColiEnemy extends Enemies{
 		fast = false;
 		worth = 1;
 		name = "E-Coli";
-		air = false;
 	}
 
 }

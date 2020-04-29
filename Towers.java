@@ -1,5 +1,9 @@
 
 public abstract class Towers {
+	//Type of Tower:
+	protected boolean groundTower;
+	protected boolean airTower;
+	//General Tower Variables:
 	protected int cost;
 	protected int range;
 	protected int damage;
@@ -9,6 +13,13 @@ public abstract class Towers {
 	protected int curDelay = 0;
 	protected int upgradeLevel;
 	protected String name;
+	//Tower Attacks:
+	protected boolean single;
+	protected boolean AOE;
+	protected boolean chain;
+	protected boolean poison;
+	//Tower Attack Variables:
+	protected int chainEffect;
 	
 	public int getDmg() {
 		return damage;
@@ -60,9 +71,36 @@ public abstract class Towers {
 		return upgradeLevel;
 	}
 	
-	public abstract void upgrade();
+	public void upgrade() {
+		upgradeLevel++;
+	}
 	
-	public abstract void deUpgrade();
+	public void deUpgrade() {
+		upgradeLevel--;
+	}
+	
+	public String attackType() {
+		if (single) {
+			return "single";
+		}
+		
+		else if (chain) {
+			return "chain";
+		}
+		
+		else if (AOE) {
+			return "AOE";
+		}
+		
+		else if (poison) {
+			return "poison";
+		}
+		return "null";
+	}
+	
+	public int getChainEffect() {
+		return chainEffect;
+	}
 	
 	public String toString() {
 		StringBuilder data = new StringBuilder();

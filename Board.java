@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Board {
 	private char[][] board;
-	private char[][] boardTemplate;
 	private int playerHealth;
 	private int toiletPaper;
 	private ArrayList<Towers> towersBuilt;
@@ -19,7 +18,6 @@ public class Board {
 		this.height = height;
 		
 		board = new char[width][height];
-		boardTemplate = new char[width][height];
 		Scanner mapScan = new Scanner(map);
 		
 		for(int j = 0; j < height; j++) {
@@ -32,13 +30,6 @@ public class Board {
 					finish = j;
 				}
 				board[i][j] = line.charAt(i);
-				
-				if (line.charAt(i) == 'S' || line.charAt(i) == 'F') {
-					boardTemplate[i][j] = '.';
-				}
-				else {
-					boardTemplate[i][j] = line.charAt(i);
-				}
 			}
 		}
 		
@@ -47,45 +38,86 @@ public class Board {
 		towersBuilt = new ArrayList<>();
 		playerHealth = 50;
 		toiletPaper = 25;
-		
-		mapScan.close();
 	}
 	
 	/**
 	 * need to add y coordinate to range check
 	 */
 	public void updateBoard() {
+		
+		//Enemies take damage
 		for(int j = 0; j < towersBuilt.size(); j++) {
-			for (int i = 0; i < onBoardFoes.size(); i++) {
-				int range = towersBuilt.get(j).getRange();
-				if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
-						&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
-						&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
-						&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
-				{
-					if (towersBuilt.get(j).getCurDelay() == 0) {
-						onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
-						towersBuilt.get(j).startDelay();
-						break;
+			//Single type attack
+			if (towersBuilt.get(j).attackType().equals("single")) {
+				for (int i = 0; i < onBoardFoes.size(); i++) {
+					int range = towersBuilt.get(j).getRange();
+					if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+							&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+							&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+							&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+					{
+						if (towersBuilt.get(j).getCurDelay() == 0) {
+							onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
+							towersBuilt.get(j).startDelay();
+							break;
+						}
 					}
 				}
 				towersBuilt.get(j).incCurDelay();
 			}
+			
+			//AOE type attack
+			if (towersBuilt.get(j).attackType().equals("AOE")) {
+				if (towersBuilt.get(j).getCurDelay() == 0) {
+					int range = towersBuilt.get(j).getRange();
+					for (int i = 0; i < onBoardFoes.size(); i++) {
+						if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+								&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+								&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+								&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) {
+							onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
+						}
+					}
+					towersBuilt.get(j).startDelay();
+				}
+				else {
+					towersBuilt.get(j).incCurDelay();
+				}
+			}
+			
+			//Chain type attack
+			if (towersBuilt.get(j).attackType().equals("chain")) {
+				for (int i = 0; i < onBoardFoes.size(); i++) {
+					int range = towersBuilt.get(j).getRange();
+					if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+							&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+							&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+							&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+					{
+						if (towersBuilt.get(j).getCurDelay() == 0) {
+							if (onBoardFoes.size() < towersBuilt.get(j).getChainEffect()) {
+								for (int k = 0; k < onBoardFoes.size(); k++) {
+									onBoardFoes.get(k).takeDamage(towersBuilt.get(j).getDmg());
+								}
+							}
+							else {
+								for (int k = 0; k < towersBuilt.get(j).getChainEffect(); k++) {
+									onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+								}
+							}
+							towersBuilt.get(j).startDelay();
+							break;
+						}
+					}
+				}
+				towersBuilt.get(j).incCurDelay();
+			}
+				
 		}
+		
 		for (int i = 0; i < onBoardFoes.size(); i++) {
-			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = boardTemplate[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()];
-			if (onBoardFoes.get(i).getAir()) {
-				onBoardFoes.get(i).move();
-				if (onBoardFoes.get(i).getSpeed()) {
-					onBoardFoes.get(i).move();
-				}
-			}
-			else {
-				moveEnemy(onBoardFoes.get(i));
-				if (onBoardFoes.get(i).getSpeed() && (onBoardFoes.get(i).getPosX() < width - 1)) {
-					moveEnemy(onBoardFoes.get(i));
-				}
-			}
+			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = '.';
+			onBoardFoes.get(i).move();
 			
 			if (onBoardFoes.get(i).isDie()) {
 				toiletPaper += onBoardFoes.get(i).getWorth();
@@ -108,7 +140,6 @@ public class Board {
 			throw new Exception("You're too broke");
 		}
 		board[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
-		boardTemplate[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
 		toiletPaper -= tower.getCost();
 		towersBuilt.add(tower);
 		
@@ -154,63 +185,6 @@ public class Board {
 		return onBoardFoes;
 	}
 	
-
-	private void moveEnemy(Enemies e) {
-		if (e.getDirection() == 'R') {
-			if (boardTemplate[e.getPosX() + 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]) {
-				e.setXPos(e.getPosX() + 1);
-			}
-			else if (boardTemplate[e.getPosX()][e.getPosY() + 1] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setYPos(e.getPosY() + 1);
-				e.setDirection('D');
-			}
-			else if (boardTemplate[e.getPosX()][e.getPosY() - 1] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setYPos(e.getPosY() - 1);
-				e.setDirection('U');
-			}
-		}
-		else if (e.getDirection() == 'L') {
-			if (boardTemplate[e.getPosX() - 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]) {
-				e.setXPos(e.getPosX() - 1);
-			}
-			else if (boardTemplate[e.getPosX()][e.getPosY() + 1] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setYPos(e.getPosY() + 1);
-				e.setDirection('D');
-			}
-			else if (boardTemplate[e.getPosX()][e.getPosY() - 1] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setYPos(e.getPosY() - 1);
-				e.setDirection('U');
-			}
-		}
-		else if (e.getDirection() == 'U') {
-			if (boardTemplate[e.getPosX()][e.getPosY() - 1] == boardTemplate[e.getPosX()][e.getPosY()]) {
-				e.setYPos(e.getPosY() - 1);
-			}
-			else if (boardTemplate[e.getPosX() + 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setXPos(e.getPosX() + 1);
-				e.setDirection('R');
-			}
-			else if (boardTemplate[e.getPosX() - 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setXPos(e.getPosX() - 1);
-				e.setDirection('L');
-			}
-		}
-		else if (e.getDirection() == 'D') {
-			if (boardTemplate[e.getPosX()][e.getPosY() + 1] == boardTemplate[e.getPosX()][e.getPosY()]) {
-				e.setYPos(e.getPosY() + 1);
-			}
-			else if (boardTemplate[e.getPosX() + 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setXPos(e.getPosX() + 1);
-				e.setDirection('R');
-			}
-			else if (boardTemplate[e.getPosX() - 1][e.getPosY()] == boardTemplate[e.getPosX()][e.getPosY()]){
-				e.setXPos(e.getPosX() - 1);
-				e.setDirection('L');
-			}
-		}
-		
-	}
-
 	public int getToiletPaper() {
 		return toiletPaper;
 	}
@@ -233,4 +207,26 @@ public class Board {
 			}
 		}
 	}
+	
+	public ArrayList<Enemies> getFoes() {
+		return foes;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

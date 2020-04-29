@@ -5,6 +5,5 @@ public class BascillusEnemy extends Enemies {
 		fast = true;
 		worth = 2;
 		name = "Bascillus";
-		air = false;
 	}
 }

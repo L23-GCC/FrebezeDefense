@@ -5,7 +5,6 @@ public class StrepEnemy extends Enemies {
 		fast = true;
 		worth = 3;
 		name = "Strep";
-		air = true;
 	}
 
 }

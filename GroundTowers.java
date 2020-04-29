@@ -4,15 +4,11 @@ public class GroundTowers extends Towers{
 	public GroundTowers(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
-	}
-
-	@Override
-	public void upgrade() {
-		upgradeLevel++;
-	}
-	
-	@Override
-	public void deUpgrade() {
-		upgradeLevel--;
+		groundTower = true;
+		airTower = false;
+		single = false;
+		AOE = false;
+		chain = false;
+		poison = false;
 	}
 }

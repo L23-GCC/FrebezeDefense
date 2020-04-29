@@ -8,6 +8,7 @@ public class IbuprofenTower extends GroundTowers{
 		fireDelay = 4;
 		upgradeLevel = 0;
 		name = "Ibuprofen Tower";
+		single = true;
 	}
 	
 	//Conceptual Design of what upgrades might look like.

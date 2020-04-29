@@ -5,7 +5,6 @@ public class StaphEnemy extends Enemies {
 		fast = false;
 		worth = 3;
 		name = "Staph";
-		air = true;
 	}
 
 }

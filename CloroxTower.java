@@ -7,8 +7,9 @@ public class CloroxTower extends GroundTowers {
 		cost = 30;
 		range = 4;
 		damage = 40;
-		fireDelay = 1;
+		fireDelay = 6;
 		name = "Clorox Tower";
+		single = true;
 	}
 
 }

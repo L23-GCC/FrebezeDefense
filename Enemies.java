@@ -6,11 +6,9 @@ public abstract class Enemies {
 	protected boolean fast;
 	protected int worth;
 	protected String name;
-	protected boolean air;
-	protected char direction = 'R';
 	
 	public void move() {
-		if(!fast) {
+		if (!fast) {
 			posX += 1;
 		}
 		else {
@@ -66,17 +64,5 @@ public abstract class Enemies {
 	
 	public String getName() {
 		return name;
-	}
-	
-	public boolean getAir() {
-		return air;
-	}
-	
-	public char getDirection() {
-		return direction;
-	}
-	
-	public void setDirection(char c) {
-		direction = c;
 	}
 }
