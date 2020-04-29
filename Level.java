@@ -12,6 +12,7 @@ public class Level {
 	private ArrayList<Integer> lvlEnemies; //Stores all the enemies
 	private int[] enemiesPerWave; //Stores how many enemies are to be released from lvlEnemies per wave
 	private boolean didYouWin = false;
+	private boolean didYouDie = false;
 	
 	public Level(String fileName) throws FileNotFoundException {
 		enemiesPerWave = new int[10];
@@ -72,7 +73,7 @@ public class Level {
 				hasLost = true;
 			}
 			
-			if (startingBoard.getOnBoardFoes().size() == 0) {
+			if (startingBoard.getOnBoardFoes().size() == 0 && startingBoard.getFoes().size() == 0) {
 				keepLoop = false;
 			}
 			count++;
@@ -80,10 +81,12 @@ public class Level {
 		
 		if (hasLost) {
 			System.out.println("You has died.");
+			didYouDie = true;
 		}
 		else {
 			if (curWave == 10) {
 				didYouWin = true;
+				System.out.println("Level Complete");
 			}
 			curWave++;
 			System.out.println("Wave Complete!");
@@ -190,6 +193,14 @@ public class Level {
 				startingBoard.addEnemy(new StaphEnemy());
 				lvlEnemies.remove(0);
 			}
+			else if (lvlEnemies.get(0) == 5) {
+				startingBoard.addEnemy(new FluEnemy());
+				lvlEnemies.remove(0);
+			}
+			else if (lvlEnemies.get(0) == 6) {
+				startingBoard.addEnemy(new CovidEnemy());
+				lvlEnemies.remove(0);
+			}
 		}
 	}
 	
@@ -210,5 +221,9 @@ public class Level {
 	
 	public int getCurWave() {
 		return curWave;
+	}
+	
+	public boolean getDieStatus() {
+		return didYouDie;
 	}
 }

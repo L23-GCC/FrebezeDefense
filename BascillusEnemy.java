@@ -1,4 +1,3 @@
-
 public class BascillusEnemy extends Enemies {
 	public BascillusEnemy() {
 		health = 5;

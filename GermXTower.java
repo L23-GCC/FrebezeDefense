@@ -1,4 +1,3 @@
-
 public class GermXTower extends GroundTowers {
 	
 	//This is the "spike machine" like in BTD.  Damage is 0 because it will be programmed to drop spikes.

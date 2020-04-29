@@ -1,4 +1,3 @@
-
 public class TumsTower extends GroundTowers {
 	
 	//This is the strong and overall better version of IbuprofenTower
@@ -9,6 +8,7 @@ public class TumsTower extends GroundTowers {
 		damage = 15;
 		fireDelay = 3;
 		name = "Tums Tower";
+		single = true;
 	}
 
 }

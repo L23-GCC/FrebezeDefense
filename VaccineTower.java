@@ -1,19 +1,12 @@
-
-public class VaccineTower extends GroundTowers{
-	
-	//This is like an ice tower, slows down the fast enemies to normal speed.
-	
-	private boolean slowed; //Freeze variable.
+public class VaccineTower extends AirTowers{
 	
 	public VaccineTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 15;
-		range = 1;
+		range = 2;
 		damage = 5;
 		fireDelay = 4;
 		name = "Vaccine Tower";
-		slowed = true;
-		
+		poison = true;
 	}
-
 }

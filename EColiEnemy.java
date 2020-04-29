@@ -1,5 +1,4 @@
-
-public class EColiEnemy extends Enemies{
+public class EColiEnemy extends Enemies {
 
 	public EColiEnemy() {
 		health = 10;
@@ -8,5 +7,4 @@ public class EColiEnemy extends Enemies{
 		name = "E-Coli";
 		air = false;
 	}
-
 }
