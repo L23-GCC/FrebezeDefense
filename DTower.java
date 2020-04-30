@@ -1,16 +1,16 @@
 
-public class VaccineTower extends AirTowers{
+public class DTower extends AirTowers{
 	
-	public VaccineTower(int posX, int posY) {
+	public DTower(int posX, int posY) {
 		super(posX, posY);
-		cost = 15;
+		cost = 22;
 		range = 2;
-		damage = 5;
+		damage = 10;
 		fireDelay = 4;
 		upgradeLevel = 0;
-		name = "Vaccine Tower";
-		single = true;
-		
+		name = "Vitamin D Tower";
+		chain = true;
+		chainEffect = 2;
 	}
 
 	@Override
@@ -18,18 +18,21 @@ public class VaccineTower extends AirTowers{
 		super.upgrade();
 		
 		if (upgradeLevel == 1) {
-			damage = 10;
-			cost = 12;
+			fireDelay = 3;
+			damage = 12;
+			cost = 17;
 		}
 		
 		else if (upgradeLevel == 2) {
 			damage = 15;
+			chainEffect = 3;
 			cost = 22;
 		}
 		
 		else if (upgradeLevel == 3) {
 			damage = 20;
-			cost = 27;
+			chainEffect = 4;
+			cost = 25;
 		}
 	}
 }
