@@ -1,3 +1,4 @@
+package enemies;
 
 public class FluEnemy extends Enemies {
 	public FluEnemy() {

@@ -1,3 +1,4 @@
+package enemies;
 public class EColiEnemy extends Enemies {
 
 	public EColiEnemy() {

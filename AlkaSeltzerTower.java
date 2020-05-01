@@ -1,19 +1,25 @@
-
+package towers;
 public class AlkaSeltzerTower extends AirTowers {
-	
 	public AlkaSeltzerTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 27;
 		range = 3;
 		damage = 15;
 		fireDelay = 3;
-		upgradeLevel = 0;
 		name = "Alkaseltzer Tower";
 		single = true;
-		
-		
 	}
-
+	
+	public AlkaSeltzerTower() {
+		super();
+		cost = 27;
+		range = 3;
+		damage = 15;
+		fireDelay = 3;
+		name = "Alkaseltzer Tower";
+		single = true;
+	}
+	
 	@Override
 	public void upgrade() {
 		super.upgrade();

@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import enemies.Enemies;
+import towers.*;
+
 import java.util.Random;
 
 public class Board {
@@ -8,6 +12,7 @@ public class Board {
 	private int playerHealth;
 	private int toiletPaper;
 	private ArrayList<Towers> towersBuilt;
+	private ArrayList<Towers> allTowers;
 	private ArrayList<Enemies> foes;
 	private ArrayList<Enemies> onBoardFoes;
 	private int finish;
@@ -131,8 +136,21 @@ public class Board {
 		//if (towersBuilt.get(j).attackType().equals("poison"))
 
 		for (int i = 0; i < onBoardFoes.size(); i++) {
-			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = '.';
-			onBoardFoes.get(i).move();
+			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = boardTemplate[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()];
+			if (onBoardFoes.get(i).getAir()) {
+				if(onBoardFoes.get(i).getPosX() < width - 1) {
+					onBoardFoes.get(i).move();
+				}
+				else {
+					onBoardFoes.get(i).setXPos(onBoardFoes.get(i).getPosX() + 1);
+				}
+			}
+			else {
+				moveEnemy(onBoardFoes.get(i));
+				if(onBoardFoes.get(i).getSpeed() && onBoardFoes.get(i).getPosX() < width - 1) {
+					moveEnemy(onBoardFoes.get(i));
+				}
+			}
 
 			if (onBoardFoes.get(i).isDie()) {
 				toiletPaper += onBoardFoes.get(i).getWorth();
@@ -153,6 +171,9 @@ public class Board {
 	public void buildTower(Towers tower) throws Exception {
 		if (tower.getCost() > toiletPaper) {
 			throw new Exception("You're too broke");
+		}
+		else if (getBoardIndex(tower.getPosX(), tower.getPosY()) != '+') {
+			throw new Exception("Cannot build a tower there");
 		}
 		board[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
 		boardTemplate[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0);
@@ -276,6 +297,10 @@ public class Board {
 		return board[x][y];
 	}
 	
+	public ArrayList<Towers> getTowersBuilt() {
+		return towersBuilt;
+	}
+	
 	public void upgradeTower(int x, int y) throws Exception {
 		for (int i = 0; i < towersBuilt.size(); i++) {
 			if (towersBuilt.get(i).getPosX() == x 
@@ -287,6 +312,9 @@ public class Board {
 				}
 				toiletPaper -= towersBuilt.get(i).getCost();
 				System.out.println(towersBuilt.get(i).getName() + " successfully upgraded!");
+			}
+			else {
+				throw new Exception("You do not own a tower at that location.");
 			}
 		}
 	}

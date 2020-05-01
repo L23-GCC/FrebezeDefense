@@ -1,3 +1,4 @@
+package enemies;
 public class StrepEnemy extends Enemies {
 	public StrepEnemy() {
 		health = 10;

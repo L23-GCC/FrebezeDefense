@@ -1,13 +1,20 @@
-
+package towers;
 public class ProbioticTower extends AirTowers{
-
 	public ProbioticTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 32;
 		range = 4;
 		damage = 40;
 		fireDelay = 6;
-		upgradeLevel = 0;
+		name = "Probiotic Tower";
+		single = true;
+	}
+	
+	public ProbioticTower() {
+		cost = 32;
+		range = 4;
+		damage = 40;
+		fireDelay = 6;
 		name = "Probiotic Tower";
 		single = true;
 	}

@@ -1,4 +1,4 @@
-
+package towers;
 public class CloroxTower extends GroundTowers {
 	
 	//Like a catapult, fires hard shots with long range, but slow rate of fire.
@@ -8,11 +8,19 @@ public class CloroxTower extends GroundTowers {
 		range = 4;
 		damage = 40;
 		fireDelay = 6;
-		upgradeLevel = 0;
 		name = "Clorox Tower";
 		single = true;
 	}
-
+	
+	public CloroxTower() {
+		cost = 30;
+		range = 4;
+		damage = 40;
+		fireDelay = 6;
+		name = "Clorox Tower";
+		single = true;
+	}
+	
 	@Override
 	public void upgrade() {
 		super.upgrade();

@@ -1,3 +1,5 @@
+package enemies;
+
 public abstract class Enemies {
 	protected int health;
 	protected int posX;

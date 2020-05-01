@@ -1,12 +1,12 @@
 IbuprofenTower
 B12Tower
-1 1 Welcome to Frebreze Tower Defense! \n It is your solemn duty to protect your body's immune system at all costs! \n Each level is broken up into 10 waves.  The game currently has 5 unique levels to play through \n  This first level serves as a tutorial to show ya the ropes. \n Oh no!  Your first enemy, an E-Coli bacteria, is about to enter your immune system! \n  Try building an Ibuprofen Tower first. 
+1 1 Welcome to Frebreze Tower Defense! poop It is your solemn duty to protect your body's immune system at all costs! poop Each level is broken up into ten waves.  The game currently has five unique levels to play through poop  This first level serves as a tutorial to show ya the ropes. poop Oh no!  Your first enemy, an E-Coli bacteria, is about to enter your immune system! poop  Try building an Ibuprofen Tower first. 
 3 1 1 1 Defeating enemies grants you toilet paper and bragging rights.
 5 1 1 1 1 1 A massive wave of E-Coli bacteria in-bound!
-1 5 Introducing a second enemy type. \n Those E-Coli enemies were all bound to the ground, however, white blood cells are reporting an air type enemy is on the horizon. \n Try building a Vitamin B12 Tower to handle this Influenza fiend!
-3 5 5 5 This game has two types of enemies, ground and air. \n Respectively, there are ground and air type towers (along with the legendary hybrid tower, The Frebreze Tower)
+1 5 Introducing a second enemy type. poop Those E-Coli enemies were all bound to the ground, however, white blood cells are reporting an air type enemy is on the horizon. poop Try building a Vitamin B12 Tower to handle this Influenza fiend!
+3 5 5 5 This game has two types of enemies, ground and air. poop Respectively, there are ground and air type towers (along with the legendary hybrid tower, The Frebreze Tower)
 5 2 1 2 1 2 Be prepared for things to speed up!  Bacteria like Bascillus tend to be quick on their feet!
-6 1 2 2 1 5 1 Not only can you build towers, you can also upgrade them! \n Try upgrading a tower to breathe hope into your noble defenders.
+6 1 2 2 1 5 1 Not only can you build towers, you can also upgrade them! poop Try upgrading a tower to breathe hope into your noble defenders.
 8 5 2 1 1 1 1 2 5 More enemies in-bound, go go go!
 5 5 5 5 5 5 "Sir, they're all flying!"
 10 5 2 1 5 1 2 1 5 2 5 It's the final wave! Do whatever it takes to defend your immune system!
@@ -15,6 +15,6 @@ B12Tower
 ++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++
 S............................F
-''''''''''''''''''''''''''''''
+``````````````````````````````
 ++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++

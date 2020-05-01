@@ -1,4 +1,6 @@
-public abstract class Towers {
+package towers;
+
+public class Towers {
 	//Type of Tower:
 	protected boolean groundTower;
 	protected boolean airTower;
@@ -19,6 +21,9 @@ public abstract class Towers {
 	protected boolean poison;
 	//Tower Attack Variables:
 	protected int chainEffect;
+	
+	public Towers() {
+	}
 	
 	public int getDmg() {
 		return damage;

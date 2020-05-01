@@ -1,4 +1,4 @@
-
+package towers;
 public class VaccineTower extends AirTowers{
 	
 	public VaccineTower(int posX, int posY) {
@@ -7,12 +7,19 @@ public class VaccineTower extends AirTowers{
 		range = 2;
 		damage = 5;
 		fireDelay = 4;
-		upgradeLevel = 0;
 		name = "Vaccine Tower";
-		single = true;
-		
+		poison = true;
 	}
-
+	
+	public VaccineTower() {
+		cost = 15;
+		range = 2;
+		damage = 5;
+		fireDelay = 4;
+		name = "Vaccine Tower";
+		poison = true;
+	}
+	
 	@Override
 	public void upgrade() {
 		super.upgrade();

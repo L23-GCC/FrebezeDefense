@@ -1,4 +1,4 @@
-
+package towers;
 public class IbuprofenTower extends GroundTowers{
 	public IbuprofenTower(int posX, int posY){
 		super(posX, posY);
@@ -11,6 +11,15 @@ public class IbuprofenTower extends GroundTowers{
 		single = true;
 	}
 	
+	public IbuprofenTower() {
+		cost = 10;
+		range = 3;
+		damage = 5;
+		fireDelay = 4;
+		upgradeLevel = 0;
+		name = "Ibuprofen Tower";
+		single = true;
+	}
 	//Conceptual Design of what upgrades might look like.
 	//Three upgrades per tower to reach final form.
 	//Upgrade 1: Increases damage and range.
@@ -38,5 +47,4 @@ public class IbuprofenTower extends GroundTowers{
 			cost = 10;
 		}
 	}
-	
 }

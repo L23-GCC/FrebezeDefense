@@ -7,7 +7,7 @@ int numEnemies Wave 3 Enemies
 int numEnemies Wave 10 Enemies
 width
 height
-++++++++++
+++++++++++ 
 S........F
 ..........
 ++++++++++
