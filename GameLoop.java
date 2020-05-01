@@ -51,7 +51,7 @@ public class GameLoop {
 		//if user chose to play all, adds every level to chosenLevels ArrayList.
 		if (userChoice == 0) {
 			for (int i = 0; i < levels.size(); i++) {
-				chosenLvls.add(new Level(levels.get(i)));
+				chosenLvls.add(new Level(levels.get(i + 1)));
 			}
 		}
 		//Otherwise, only add the level chosen by the user.
