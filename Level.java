@@ -104,44 +104,44 @@ public class Level {
 		}
 	}
 	
-	public void convert(ArrayList<Towers> t, int x, int y) {
+	public void convert(ArrayList<Towers> t) {
 		
 		for(int i = 0; i < buildableTowers.size(); i++) {
 			String type = buildableTowers.get(i);
 			
 			switch (type) {
 			case "IbuprofenTower":
-				t.add(new IbuprofenTower(x, y));
+				t.add(new IbuprofenTower());
 				break;
 			case "AlkaSeltzerTower":
-				t.add(new AlkaSeltzerTower(x, y));
+				t.add(new AlkaSeltzerTower());
 				break;
 			case "CloroxTower":
-				t.add(new CloroxTower(x, y));
+				t.add(new CloroxTower());
 				break;
 			case "FrebrezeTower":
-				t.add(new FrebrezeTower(x, y));
+				t.add(new FrebrezeTower());
 				break;
 			case "HandSanitizerTower":
-				t.add(new HandSanitizerTower(x, y));
+				t.add(new HandSanitizerTower());
 				break;
 			case "ProbioticTower":
-				t.add(new ProbioticTower(x, y));
+				t.add(new ProbioticTower());
 				break;
 			case "TumsTower":
-				t.add(new TumsTower(x, y));
+				t.add(new TumsTower());
 				break;
 			case "VaccineTower":
-				t.add(new VaccineTower(x, y));
+				t.add(new VaccineTower());
 				break;
 			case "VitaminB12Tower":
-				t.add(new VitaminB12Tower(x, y));
+				t.add(new VitaminB12Tower());
 				break;
 			case "VitaminCTower":
-				t.add(new VitaminCTower(x, y));
+				t.add(new VitaminCTower());
 				break;
 			case "VitaminDTower":
-				t.add(new VitaminDTower(x, y));
+				t.add(new VitaminDTower());
 				break;
 			}
 		}
@@ -150,7 +150,7 @@ public class Level {
 	public String towerInfo() {
 		StringBuilder sb = new StringBuilder();
 		ArrayList<Towers> allTowers = new ArrayList<>();
-		convert(allTowers, 0, 0);
+		convert(allTowers);
 		
 		sb.append("     Type      |  Cost  |  Damage  |  Range  | Rate of Fire");
 		int max = 0;
