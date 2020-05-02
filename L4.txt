@@ -3,6 +3,7 @@ LysolTower
 CTower
 B12Tower
 FrebrezeTower
+HandSanitizerTower
 4 1 1 2 1 The best advances in immune defenses have been given to you. Use them to the fullest extent!
 6 3 3 3 4 3 4 The bombardment of the virus' assault is just beginning.
 5 5 5 5 5 3 It's flu season.

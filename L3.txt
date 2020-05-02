@@ -1,22 +1,22 @@
 IbuprofenTower
 TumsTower
 CTower
+DTower
 CloroxTower
 HandSanitizerTower
 FrebrezeTower
 5 5 5 5 5 5 Let's just say, things start out "feathery."
-10 5 5 5 5 5 5 5 5 5 5
-.
-.
-.
-.
-.
-.
-.
-.
+10 5 5 5 5 5 5 5 5 5 5 Flutter flutter, I hope you have some butter.
+5 3 3 3 3 3 The new approaching enemies appear to be mere foot soldiers! You know what to do.
+10 1 1 1 1 1 1 1 1 1 1 Uniformity over conformity!
+15 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 "The Train Kept a Rollin'" - Aerosmith.
+8 2 3 2 3 2 3 2 3 Butter my croissant!
+10 3 4 5 3 4 5 3 4 5 5 Let's mix things up a bit, shall we?
+12 6 6 6 6 6 "Someone, grab the toilet paper! The end is nigh!"
+15 6 6 5 2 2 6 6 5 2 2 6 6 5 2 2 Considering this is your second to last round, things get ... s p i c y.
+30 6 6 5 4 3 2 1 2 3 5 6 6 5 4 3 2 1 2 3 5 6 6 5 4 3 2 1 2 3 5 Your final gambit. Defend!
 26
-18
-++++++++++++++++++++++++++
+16
 ++++++++++++++++++++++++++
 ++++++++++++++++++++++++++
 ++++++++++......++++++++++
@@ -31,6 +31,5 @@ S..++++++++++++++++++++..F
 ++++++```++++++++```++++++
 ++++++++```++++```++++++++
 ++++++++++``````++++++++++
-++++++++++++++++++++++++++
 ++++++++++++++++++++++++++
 ++++++++++++++++++++++++++

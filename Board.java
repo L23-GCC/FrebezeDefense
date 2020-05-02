@@ -52,14 +52,12 @@ public class Board {
 		onBoardFoes = new ArrayList<>();
 		towersBuilt = new ArrayList<>();
 		playerHealth = 50;
-		toiletPaper = 25;
+		toiletPaper = 50000;
 		
 		mapScan.close();
 	}
 	
-	/**
-	 * need to add y coordinate to range check
-	 */
+	
 	public void updateBoard() {
 
 		//Enemies take damage
@@ -67,20 +65,38 @@ public class Board {
 			//Single type attack
 			if (towersBuilt.get(j).attackType().equals("single")) {
 				for (int i = 0; i < onBoardFoes.size(); i++) {
-					int range = towersBuilt.get(j).getRange();
-					if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
-							&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
-							&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
-							&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
-					{
-						if (towersBuilt.get(j).getCurDelay() == 0) {
-							onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
-							towersBuilt.get(j).startDelay();
-							break;
+					//Checks if ground enemy
+					if (towersBuilt.get(j).isGroundAttack() && !onBoardFoes.get(i).getAir()) {
+						int range = towersBuilt.get(j).getRange();
+						if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+								&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+								&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+								&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+						{
+							if (towersBuilt.get(j).getCurDelay() == 0) {
+								onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
+								towersBuilt.get(j).startDelay();
+								break;
+							}
 						}
 					}
+					//checks if air enemy
+					else if (!towersBuilt.get(j).isGroundAttack() && onBoardFoes.get(i).getAir()) {
+						int range = towersBuilt.get(j).getRange();
+						if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+								&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+								&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+								&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+						{
+							if (towersBuilt.get(j).getCurDelay() == 0) {
+								onBoardFoes.get(i).takeDamage(towersBuilt.get(j).getDmg());
+								towersBuilt.get(j).startDelay();
+								break;
+							}
+						}
+					}
+					towersBuilt.get(j).incCurDelay();
 				}
-				towersBuilt.get(j).incCurDelay();
 			}
 
 			//AOE type attack
@@ -105,25 +121,59 @@ public class Board {
 			//Chain type attack
 			if (towersBuilt.get(j).attackType().equals("chain")) {
 				for (int i = 0; i < onBoardFoes.size(); i++) {
-					int range = towersBuilt.get(j).getRange();
-					if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
-							&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
-							&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
-							&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
-					{
-						if (towersBuilt.get(j).getCurDelay() == 0) {
-							if (onBoardFoes.size() < towersBuilt.get(j).getChainEffect()) {
-								for (int k = 0; k < onBoardFoes.size(); k++) {
-									onBoardFoes.get(k).takeDamage(towersBuilt.get(j).getDmg());
+					//Checks if ground enemy
+					if (towersBuilt.get(j).isGroundAttack() && !onBoardFoes.get(i).getAir()) {
+						int range = towersBuilt.get(j).getRange();
+						if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+								&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+								&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+								&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+						{
+							if (towersBuilt.get(j).getCurDelay() == 0) {
+								if (onBoardFoes.size() < towersBuilt.get(j).getChainEffect()) {
+									for (int k = 0; k < onBoardFoes.size(); k++) {
+										onBoardFoes.get(k).takeDamage(towersBuilt.get(j).getDmg());
+									}
 								}
-							}
-							else {
-								for (int k = 0; k < towersBuilt.get(j).getChainEffect(); k++) {
-									onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+								else {
+									for (int k = 0; k < towersBuilt.get(j).getChainEffect(); k++) {
+										onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+									}
 								}
+								towersBuilt.get(j).startDelay();
+								break;
 							}
-							towersBuilt.get(j).startDelay();
-							break;
+						}
+					}
+					
+					//Checks if air enemy
+					else if (!towersBuilt.get(j).isGroundAttack() && onBoardFoes.get(i).getAir()) {
+						int range = towersBuilt.get(j).getRange();
+						if (onBoardFoes.get(i).getPosX() <= towersBuilt.get(j).getPosX() + range 
+								&& onBoardFoes.get(i).getPosX() >= towersBuilt.get(j).getPosX() - range
+								&& onBoardFoes.get(i).getPosY() <= towersBuilt.get(j).getPosY() + range 
+								&& onBoardFoes.get(i).getPosY() >= towersBuilt.get(j).getPosY() - range) 
+						{
+							if (towersBuilt.get(j).getCurDelay() == 0) {
+								if (onBoardFoes.size() < towersBuilt.get(j).getChainEffect()) {
+									for (int k = 0; k < onBoardFoes.size(); k++) {
+										onBoardFoes.get(k).takeDamage(towersBuilt.get(j).getDmg());
+									}
+								}
+								else {
+									for (int k = 0; k < towersBuilt.get(j).getChainEffect(); k++) {
+										if (onBoardFoes.size() > (i + k)) {
+											onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+										}
+										else {
+											break;
+										}
+										
+									}
+								}
+								towersBuilt.get(j).startDelay();
+								break;
+							}
 						}
 					}
 				}
@@ -131,9 +181,6 @@ public class Board {
 			}
 
 		}
-
-		//Poison type attack
-		//if (towersBuilt.get(j).attackType().equals("poison"))
 
 		for (int i = 0; i < onBoardFoes.size(); i++) {
 			board[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()] = boardTemplate[onBoardFoes.get(i).getPosX()][onBoardFoes.get(i).getPosY()];
