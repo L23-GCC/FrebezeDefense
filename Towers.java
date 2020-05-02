@@ -106,6 +106,13 @@ public class Towers {
 		return chainEffect;
 	}
 	
+	public boolean isGroundAttack() {
+		if (groundTower) {
+			return true;
+		}
+		return false;
+	}
+	
 	public String toString() {
 		StringBuilder data = new StringBuilder();
 		data.append("Type: " + name + "\nCost: " + cost
