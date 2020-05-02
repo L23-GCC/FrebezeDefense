@@ -147,12 +147,12 @@ public class Level {
 		}
 	}
 	
-	public String towerInfo() {
+		public String towerInfo() {
 		StringBuilder sb = new StringBuilder();
 		ArrayList<Towers> allTowers = new ArrayList<>();
 		convert(allTowers);
 		
-		sb.append("     Type      |  Cost  |  Damage  |  Range  |  Fire Delay ");
+		sb.append("     Type      |  Cost  |  Damage  |  Range  | Rate of Fire |         Type");
 		int max = 0;
 		for(int i = 0; i < buildableTowers.size(); i++) {
 			for(int j = 0; j < buildableTowers.size(); j++) {
@@ -162,7 +162,7 @@ public class Level {
 			}
 		}
 		for (int i = 0; i < allTowers.size(); i++) {
-			sb.append("\n===========================================================\n");
+			sb.append("\n===================================================================================\n");
 			sb.append(allTowers.get(i).getName());
 			for(int j = 0; j < max - buildableTowers.get(i).length(); j++) {
 				sb.append(" ");
@@ -173,7 +173,18 @@ public class Level {
 			}
 					
 			sb.append(allTowers.get(i).getDmg() + "    |    " + allTowers.get(i).getRange() + 
-					"    |      " + allTowers.get(i).getFireDelay());
+					"    |      " + allTowers.get(i).getFireDelay() + "       | ");
+			
+			if (allTowers.get(i).getAir()) {
+				sb.append("Air Tower - " + allTowers.get(i).attackType());
+			}
+			else if(allTowers.get(i).getGround()) {
+				sb.append("Ground Tower - " + allTowers.get(i).attackType());
+			}
+			else {
+				sb.append("Hybrid Tower - " + allTowers.get(i).attackType());
+			}
+			
 		}
 		return sb.toString();
 	}
