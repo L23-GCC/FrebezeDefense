@@ -119,8 +119,8 @@ public class Level {
 			case "LysolTower":
 				t.add(new LysolTower());
 				break;
-			case "FrebrezeTower":
-				t.add(new FrebrezeTower());
+			case "FebrezeTower":
+				t.add(new FebrezeTower());
 				break;
 			case "HandSanitizerTower":
 				t.add(new HandSanitizerTower());
@@ -147,7 +147,7 @@ public class Level {
 		}
 	}
 	
-		public String towerInfo() {
+	public String towerInfo() {
 		StringBuilder sb = new StringBuilder();
 		ArrayList<Towers> allTowers = new ArrayList<>();
 		convert(allTowers);
@@ -187,6 +187,7 @@ public class Level {
 			
 		}
 		return sb.toString();
+	
 	}
 	
 	public String printUpgradeTowers() {
@@ -271,8 +272,8 @@ public class Level {
 						else if (buildableTowers.get(chosenTwr).equals("AlkaSeltzerTower")) {
 							startingBoard.buildTower(new AlkaSeltzerTower(x, y));
 						}
-						else if (buildableTowers.get(chosenTwr).equals("FrebrezeTower")) {
-							startingBoard.buildTower(new FrebrezeTower(x, y));
+						else if (buildableTowers.get(chosenTwr).equals("FebrezeTower")) {
+							startingBoard.buildTower(new FebrezeTower(x, y));
 						}
 						else if (buildableTowers.get(chosenTwr).equals("ProbioticTower")) {
 							startingBoard.buildTower(new ProbioticTower(x, y));

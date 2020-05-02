@@ -8,7 +8,7 @@ public class LysolTower extends GroundTowers {
 		range = 4;
 		damage = 40;
 		fireDelay = 6;
-		name = "LysolTower";
+		name = "Lysol Tower";
 		single = true;
 	}
 	
@@ -17,7 +17,7 @@ public class LysolTower extends GroundTowers {
 		range = 4;
 		damage = 40;
 		fireDelay = 6;
-		name = "LysolTower";
+		name = "Lysol Tower";
 		single = true;
 	}
 	

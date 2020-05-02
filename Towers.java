@@ -93,11 +93,11 @@ public class Towers {
 	
 	public String attackType() {
 		if (single) {
-			return "Single";
+			return "single";
 		}
 		
 		else if (chain) {
-			return "Chain";
+			return "chain";
 		}
 		
 		else if (AOE) {
@@ -105,7 +105,7 @@ public class Towers {
 		}
 		
 		else if (poison) {
-			return "Poison";
+			return "poison";
 		}
 		return "null";
 	}
@@ -120,5 +120,12 @@ public class Towers {
 				+ "\nDamage: " + damage + "\nRange: " + range
 				+ "\nFireDelay: " + fireDelay);
 		return data.toString();
+	}
+
+	public boolean isGroundAttack() {
+		if (groundTower) {
+			return true;
+		}
+		return false;
 	}
 }
