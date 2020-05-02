@@ -304,30 +304,34 @@ public class Level {
 							}
 							catch(Exception e2) {
 								System.out.println("Invalid Entry.");
+								System.out.println(e.getMessage());
 								scan.nextLine();
 							}
+							break;
 						}
+						break;
 					}
 				}
 			}
 			else if (userChoice == 1) {
 				System.out.println("Select the tower you would like to upgrade");
 				System.out.println(printUpgradeTowers());
-				System.out.println("Enter the coordinates of the tower you would like to upgrade: ");
+				System.out.println("Enter the index of the tower you would like to upgrade: ");
 				
-				int x;
-				int y;
+				int index;
+
 				while (true) {
 					try {
-						x = scan.nextInt();
-						y = scan.nextInt();
-						startingBoard.upgradeTower(x, y);
+						index = scan.nextInt();
+						startingBoard.upgradeTower(index);
 						break;
 					}
 					catch(Exception e) {
 						System.out.println("Invalid Entry.");
+						System.out.println(e.getMessage());
 						scan.nextLine();
 					}
+					break;
 				}
 			}
 			

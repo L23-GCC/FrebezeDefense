@@ -1,6 +1,6 @@
 IbuprofenTower
 B12Tower
-1 1 Welcome to Frebreze Tower Defense! poop It is your solemn duty to protect your body's immune system at all costs! poop Each level is broken up into ten waves.  The game currently has five unique levels to play through poop  This first level serves as a tutorial to show ya the ropes. poop Oh no!  Your first enemy, an E-Coli bacteria, is about to enter your immune system! poop  Try building an Ibuprofen Tower first. 
+1 1 Welcome to Febreze Tower Defense! poop It is your solemn duty to protect your body's immune system at all costs! poop Each level is broken up into ten waves.  The game currently has five unique levels to play through poop  This first level serves as a tutorial to show ya the ropes. poop Oh no!  Your first enemy, an E-Coli bacteria, is about to enter your immune system! poop  Try building an Ibuprofen Tower first. 
 3 1 1 1 Defeating enemies grants you toilet paper and bragging rights.
 5 1 1 1 1 1 A massive wave of E-Coli bacteria in-bound!
 1 5 Introducing a second enemy type. poop Those E-Coli enemies were all bound to the ground, however, white blood cells are reporting an air type enemy is on the horizon. poop Try building a Vitamin B12 Tower to handle this Influenza fiend!

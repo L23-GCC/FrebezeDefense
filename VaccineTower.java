@@ -4,20 +4,20 @@ public class VaccineTower extends AirTowers{
 	public VaccineTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 15;
-		range = 2;
-		damage = 5;
-		fireDelay = 4;
+		range = 1;
+		damage = 8;
+		fireDelay = 1;
 		name = "Vaccine Tower";
-		poison = true;
+		single = true;
 	}
 	
 	public VaccineTower() {
 		cost = 15;
-		range = 2;
-		damage = 5;
-		fireDelay = 4;
+		range = 1;
+		damage = 8;
+		fireDelay = 1;
 		name = "Vaccine Tower";
-		poison = true;
+		single = true;
 	}
 	
 	@Override

@@ -5,7 +5,7 @@ public class HandSanitizerTower extends GroundTowers {
 		cost = 15;
 		range = 1;
 		damage = 8;
-		fireDelay = 6;
+		fireDelay = 1;
 		upgradeLevel = 0;
 		name = "Hand Sanitizer Tower";
 		single = true;
@@ -15,7 +15,7 @@ public class HandSanitizerTower extends GroundTowers {
 		cost = 15;
 		range = 1;
 		damage = 8;
-		fireDelay = 6;
+		fireDelay = 1;
 		upgradeLevel = 0;
 		name = "Hand Sanitizer Tower";
 		single = true;

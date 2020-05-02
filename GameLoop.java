@@ -25,7 +25,7 @@ public class GameLoop {
 		levels.put(2, "L2.txt");
 		levels.put(3, "L3.txt");
 		levels.put(4, "L4.txt");
-		levels.put(5, "L5.txt");
+		//levels.put(5, "L5.txt");
 		
 		Scanner cons = new Scanner(System.in);
 		System.out.println(printMenu());

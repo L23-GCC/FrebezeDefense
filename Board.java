@@ -345,26 +345,24 @@ public class Board {
 	public char getBoardIndex(int x, int y) {
 		return board[x][y];
 	}
-	
+
 	public ArrayList<Towers> getTowersBuilt() {
 		return towersBuilt;
 	}
-	
-	public void upgradeTower(int x, int y) throws Exception {
-		for (int i = 0; i < towersBuilt.size(); i++) {
-			if (towersBuilt.get(i).getPosX() == x 
-				&& towersBuilt.get(i).getPosY() == y) {
-				towersBuilt.get(i).upgrade();
-				if (towersBuilt.get(i).getCost() > toiletPaper) {
-					towersBuilt.get(i).deUpgrade();
-					throw new Exception ("You're too broke.");
-				}
-				toiletPaper -= towersBuilt.get(i).getCost();
-				System.out.println(towersBuilt.get(i).getName() + " successfully upgraded!");
+
+	public void upgradeTower(int index) throws Exception {
+		if (index >= 0 && index < towersBuilt.size()) {
+			towersBuilt.get(index).upgrade();
+			if (towersBuilt.get(index).getCost() > toiletPaper) {
+				towersBuilt.get(index).deUpgrade();
+				throw new Exception ("You're too broke.");
 			}
-			else {
-				throw new Exception("You do not own a tower at that location.");
-			}
+			toiletPaper -= towersBuilt.get(index).getCost();
+			System.out.println(towersBuilt.get(index).getName() + " successfully upgraded!");
+		}
+		else {
+			throw new Exception ("Index was invalid.");
 		}
 	}
+
 }

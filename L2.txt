@@ -1,7 +1,7 @@
 IbuprofenTower
 TumsTower
 HandSanitizerTower
-VitaminB12Tower
+B12Tower
 AlkaSeltzerTower
 VaccineTower
 3 1 1 1 "The mobs... They're a comin'!  I know they're out there..."
