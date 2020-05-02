@@ -194,7 +194,7 @@ public class Level {
 		
 		options.append("Health: " + startingBoard.getPlayerHealth()
 				+ "\nToilet Paper: " + startingBoard.getToiletPaper()
-				+ "\nOptions menu: (enter the number in parenthesis to make selection)"
+				+ "\nOptions menu: (enter the number in parentheses to make selection)"
 				+ "\n 	(0) - Build Tower"
 				+ "\n	(1) - Upgrade Tower"
 				+ "\n	(2) - Tower Information"
@@ -223,79 +223,107 @@ public class Level {
 			if (userChoice == 0) {
 				System.out.println(buildableTowers);
 				System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
+				
 				while(!(scan.hasNextInt())) {
 					System.out.println("Invalid entry");
 					System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
 					scan.next();
 				}
+				
 				int chosenTwr = scan.nextInt();
-				while (chosenTwr < 0 || chosenTwr > (buildableTowers.size() - 1)) {
-					System.out.println("Invalid entry");
-					System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
-					scan.next();
-				}
-				while(!(scan.hasNextInt())) {
-					System.out.println("Invalid entry");
-					System.out.println("Enter int for x coordinate and y coordinate.");
-					scan.next();
-				}
 				int x = scan.nextInt();
-				while(!(scan.hasNextInt())) {
-					System.out.println("Invalid entry");
-					System.out.println("Enter int for y coordinate.");
-					scan.next();
-				}
 				int y = scan.nextInt();
-				try {
-					if (buildableTowers.get(chosenTwr).equals("IbuprofenTower")) {
-						startingBoard.buildTower(new IbuprofenTower(x, y));
+				
+				boolean validEntry = false;
+				while(!validEntry) {
+					try {
+						if (buildableTowers.get(chosenTwr).equals("IbuprofenTower")) {
+							startingBoard.buildTower(new IbuprofenTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
+							startingBoard.buildTower(new CloroxTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
+							startingBoard.buildTower(new HandSanitizerTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("TumsTower")) {
+							startingBoard.buildTower(new TumsTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("AlkaSeltzerTower")) {
+							startingBoard.buildTower(new AlkaSeltzerTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("FrebrezeTower")) {
+							startingBoard.buildTower(new FrebrezeTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("ProbioticTower")) {
+							startingBoard.buildTower(new ProbioticTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("VaccineTower")) {
+							startingBoard.buildTower(new VaccineTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("B12Tower")) {
+							startingBoard.buildTower(new VitaminB12Tower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("CTower")) {
+							startingBoard.buildTower(new VitaminCTower(x, y));
+							validEntry = true;
+						}
+						else if (buildableTowers.get(chosenTwr).equals("DTower")) {
+							startingBoard.buildTower(new VitaminDTower(x, y));
+							validEntry = true;
+						}
 					}
-					else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
-						startingBoard.buildTower(new CloroxTower(x, y));
+					catch (Exception e) {
+						System.out.println(e.getMessage());
+						System.out.println("Please re-enter values:");
+						while(!(scan.hasNextInt())) {
+							System.out.println("Invalid entry");
+							System.out.println("Please re-enter values:");
+							scan.next();
+						}
+						chosenTwr = scan.nextInt();
+						x = scan.nextInt();
+						y = scan.nextInt();
 					}
-					else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
-						startingBoard.buildTower(new HandSanitizerTower(x, y));	
-					}
-					else if (buildableTowers.get(chosenTwr).equals("TumsTower")) {
-						startingBoard.buildTower(new TumsTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("AlkaSeltzerTower")) {
-						startingBoard.buildTower(new AlkaSeltzerTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("FrebrezeTower")) {
-						startingBoard.buildTower(new FrebrezeTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("ProbioticTower")) {
-						startingBoard.buildTower(new ProbioticTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("VaccineTower")) {
-						startingBoard.buildTower(new VaccineTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("B12Tower")) {
-						startingBoard.buildTower(new VitaminB12Tower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("CTower")) {
-						startingBoard.buildTower(new VitaminCTower(x, y));
-					}
-					else if (buildableTowers.get(chosenTwr).equals("DTower")) {
-						startingBoard.buildTower(new VitaminDTower(x, y));
-					}
-				}
-				catch (Exception e) {
-					System.out.println(e.getMessage());
 				}
 			}
 			else if (userChoice == 1) {
 				System.out.println("Select the tower you would like to upgrade");
 				System.out.println(upgradeTowers());
 				System.out.println("Enter the coordinates of the tower you would like to upgrade: ");
+				while(!(scan.hasNextInt())) {
+					System.out.println("Invalid entry");
+					System.out.println("Enter int for x coordinate and y coordinate.");
+					scan.next();
+				}
 				int x = scan.nextInt();
 				int y = scan.nextInt();
-				try {
-					startingBoard.upgradeTower(x, y);
-				}
-				catch (Exception e) {
-					System.out.println(e.getMessage());
+				boolean validEntry = false;
+				while(!validEntry) {
+					try {
+						startingBoard.upgradeTower(x, y);
+						validEntry = true;
+					}
+					catch (Exception e) {
+						System.out.println(e.getMessage());
+						System.out.println("Please Re-enter values:");
+						while(!(scan.hasNextInt())) {
+							System.out.println("Invalid entry");
+							System.out.println("Please Re-enter values:");
+							scan.next();
+						}
+						x = scan.nextInt();
+						y = scan.nextInt();
+					}
 				}
 			}
 			else if (userChoice == 2) {
