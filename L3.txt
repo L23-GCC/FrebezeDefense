@@ -1,7 +1,7 @@
 IbuprofenTower
 TumsTower
-VitaminCTower
-VitaminDTower
+CTower
+DTower
 CloroxTower
 HandSanitizerTower
 FrebrezeTower
