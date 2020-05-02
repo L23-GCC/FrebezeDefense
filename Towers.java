@@ -25,6 +25,14 @@ public class Towers {
 	public Towers() {
 	}
 	
+	public boolean getAir() {
+		return airTower;
+	}
+	
+	public boolean getGround() {
+		return groundTower;
+	}
+	
 	public int getDmg() {
 		return damage;
 	}
@@ -85,11 +93,11 @@ public class Towers {
 	
 	public String attackType() {
 		if (single) {
-			return "single";
+			return "Single";
 		}
 		
 		else if (chain) {
-			return "chain";
+			return "Chain";
 		}
 		
 		else if (AOE) {
@@ -97,20 +105,13 @@ public class Towers {
 		}
 		
 		else if (poison) {
-			return "poison";
+			return "Poison";
 		}
 		return "null";
 	}
 	
 	public int getChainEffect() {
 		return chainEffect;
-	}
-	
-	public boolean isGroundAttack() {
-		if (groundTower) {
-			return true;
-		}
-		return false;
 	}
 	
 	public String toString() {
