@@ -206,17 +206,20 @@ public class Level {
 		System.out.println(printBoard());
 		System.out.println(printWaveHints());
 		System.out.println(menu());
+		int userChoice;
 		
-		while(!(scan.hasNextInt())) {
-			System.out.println("Invalid entry");
-			System.out.println(menu());
-			scan.next();
-		}
-		int userChoice = scan.nextInt();
-		while(userChoice > 3 || userChoice < 0) {
-			System.out.println("Invalid entry");
-			System.out.println(menu());
-			scan.next();
+		while (true) {
+			try {
+				userChoice = scan.nextInt();
+				if (userChoice < 0 || userChoice > 3) {
+					throw new Exception();
+				}
+				break;
+			}
+			catch(Exception e) {
+				System.out.println("Invalid Entry.");
+				scan.nextLine();
+			}
 		}
 
 		while (userChoice != 3) {
@@ -227,7 +230,7 @@ public class Level {
 				while(!(scan.hasNextInt())) {
 					System.out.println("Invalid entry");
 					System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
-					scan.next();
+					scan.nextLine();
 				}
 				
 				int chosenTwr = scan.nextInt();
@@ -288,7 +291,7 @@ public class Level {
 						while(!(scan.hasNextInt())) {
 							System.out.println("Invalid entry");
 							System.out.println("Please re-enter values:");
-							scan.next();
+							scan.nextLine();
 						}
 						chosenTwr = scan.nextInt();
 						x = scan.nextInt();
@@ -303,7 +306,7 @@ public class Level {
 				while(!(scan.hasNextInt())) {
 					System.out.println("Invalid entry");
 					System.out.println("Enter int for x coordinate and y coordinate.");
-					scan.next();
+					scan.nextLine();
 				}
 				int x = scan.nextInt();
 				int y = scan.nextInt();
@@ -319,7 +322,7 @@ public class Level {
 						while(!(scan.hasNextInt())) {
 							System.out.println("Invalid entry");
 							System.out.println("Please Re-enter values:");
-							scan.next();
+							scan.nextLine();
 						}
 						x = scan.nextInt();
 						y = scan.nextInt();
@@ -337,11 +340,13 @@ public class Level {
 			while(!(scan.hasNextInt())) {
 				System.out.println("Invalid entry");
 				System.out.println(menu());
+				scan.nextLine();
 			}
 			userChoice = scan.nextInt();
 			while(userChoice > 3 || userChoice < 0) {
 				System.out.println("Invalid entry");
 				System.out.println(menu());
+				scan.nextLine();
 			}
 		}
 	}
