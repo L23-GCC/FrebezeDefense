@@ -116,8 +116,8 @@ public class Level {
 			case "AlkaSeltzerTower":
 				t.add(new AlkaSeltzerTower());
 				break;
-			case "CloroxTower":
-				t.add(new CloroxTower());
+			case "LysolTower":
+				t.add(new LysolTower());
 				break;
 			case "FrebrezeTower":
 				t.add(new FrebrezeTower());
@@ -134,13 +134,13 @@ public class Level {
 			case "VaccineTower":
 				t.add(new VaccineTower());
 				break;
-			case "VitaminB12Tower":
+			case "B12Tower":
 				t.add(new VitaminB12Tower());
 				break;
-			case "VitaminCTower":
+			case "CTower":
 				t.add(new VitaminCTower());
 				break;
-			case "VitaminDTower":
+			case "DTower":
 				t.add(new VitaminDTower());
 				break;
 			}
@@ -152,7 +152,7 @@ public class Level {
 		ArrayList<Towers> allTowers = new ArrayList<>();
 		convert(allTowers);
 		
-		sb.append("     Type      |  Cost  |  Damage  |  Range  | Rate of Fire");
+		sb.append("     Type      |  Cost  |  Damage  |  Range  |  Fire Delay ");
 		int max = 0;
 		for(int i = 0; i < buildableTowers.size(); i++) {
 			for(int j = 0; j < buildableTowers.size(); j++) {
@@ -178,7 +178,7 @@ public class Level {
 		return sb.toString();
 	}
 	
-	public String upgradeTowers() {
+	public String printUpgradeTowers() {
 		StringBuilder sb = new StringBuilder();
 		
 		for(int i = 0; i < startingBoard.getTowersBuilt().size(); i++) {
@@ -227,108 +227,98 @@ public class Level {
 				System.out.println(buildableTowers);
 				System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
 				
-				while(!(scan.hasNextInt())) {
-					System.out.println("Invalid entry");
-					System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
-					scan.nextLine();
+				int x;
+				int y;
+				int chosenTwr;
+				while (true) {
+					try {
+						chosenTwr = scan.nextInt();
+						x = scan.nextInt();
+						y = scan.nextInt();
+						break;
+					}
+					catch(Exception e) {
+						System.out.println("Invalid Entry.");
+						scan.nextLine();
+					}
 				}
 				
-				int chosenTwr = scan.nextInt();
-				int x = scan.nextInt();
-				int y = scan.nextInt();
-				
-				boolean validEntry = false;
-				while(!validEntry) {
+				while(true) {
 					try {
 						if (buildableTowers.get(chosenTwr).equals("IbuprofenTower")) {
 							startingBoard.buildTower(new IbuprofenTower(x, y));
-							validEntry = true;
 						}
-						else if (buildableTowers.get(chosenTwr).equals("CloroxTower")) {
-							startingBoard.buildTower(new CloroxTower(x, y));
-							validEntry = true;
+						else if (buildableTowers.get(chosenTwr).equals("LysolTower")) {
+							startingBoard.buildTower(new LysolTower(x, y));
 						}
 						else if (buildableTowers.get(chosenTwr).equals("HandSanitizerTower")) {
 							startingBoard.buildTower(new HandSanitizerTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("TumsTower")) {
 							startingBoard.buildTower(new TumsTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("AlkaSeltzerTower")) {
 							startingBoard.buildTower(new AlkaSeltzerTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("FrebrezeTower")) {
 							startingBoard.buildTower(new FrebrezeTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("ProbioticTower")) {
 							startingBoard.buildTower(new ProbioticTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("VaccineTower")) {
 							startingBoard.buildTower(new VaccineTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("B12Tower")) {
 							startingBoard.buildTower(new VitaminB12Tower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("CTower")) {
 							startingBoard.buildTower(new VitaminCTower(x, y));
-							validEntry = true;
 						}
 						else if (buildableTowers.get(chosenTwr).equals("DTower")) {
 							startingBoard.buildTower(new VitaminDTower(x, y));
-							validEntry = true;
 						}
+						break;
 					}
 					catch (Exception e) {
 						System.out.println(e.getMessage());
 						System.out.println("Please re-enter values:");
-						while(!(scan.hasNextInt())) {
-							System.out.println("Invalid entry");
-							System.out.println("Please re-enter values:");
-							scan.nextLine();
+						while (true) {
+							try {
+								chosenTwr = scan.nextInt();
+								x = scan.nextInt();
+								y = scan.nextInt();
+								break;
+							}
+							catch(Exception e2) {
+								System.out.println("Invalid Entry.");
+								scan.nextLine();
+							}
 						}
-						chosenTwr = scan.nextInt();
-						x = scan.nextInt();
-						y = scan.nextInt();
 					}
 				}
 			}
 			else if (userChoice == 1) {
 				System.out.println("Select the tower you would like to upgrade");
-				System.out.println(upgradeTowers());
+				System.out.println(printUpgradeTowers());
 				System.out.println("Enter the coordinates of the tower you would like to upgrade: ");
-				while(!(scan.hasNextInt())) {
-					System.out.println("Invalid entry");
-					System.out.println("Enter int for x coordinate and y coordinate.");
-					scan.nextLine();
-				}
-				int x = scan.nextInt();
-				int y = scan.nextInt();
-				boolean validEntry = false;
-				while(!validEntry) {
+				
+				int x;
+				int y;
+				while (true) {
 					try {
-						startingBoard.upgradeTower(x, y);
-						validEntry = true;
-					}
-					catch (Exception e) {
-						System.out.println(e.getMessage());
-						System.out.println("Please Re-enter values:");
-						while(!(scan.hasNextInt())) {
-							System.out.println("Invalid entry");
-							System.out.println("Please Re-enter values:");
-							scan.nextLine();
-						}
 						x = scan.nextInt();
 						y = scan.nextInt();
+						startingBoard.upgradeTower(x, y);
+						break;
+					}
+					catch(Exception e) {
+						System.out.println("Invalid Entry.");
+						scan.nextLine();
 					}
 				}
 			}
+			
 			else if (userChoice == 2) {
 				System.out.println(towerInfo());
 			}
@@ -337,16 +327,18 @@ public class Level {
 			
 			System.out.println(menu());
 			
-			while(!(scan.hasNextInt())) {
-				System.out.println("Invalid entry");
-				System.out.println(menu());
-				scan.nextLine();
-			}
-			userChoice = scan.nextInt();
-			while(userChoice > 3 || userChoice < 0) {
-				System.out.println("Invalid entry");
-				System.out.println(menu());
-				scan.nextLine();
+			while (true) {
+				try {
+					userChoice = scan.nextInt();
+					if (userChoice < 0 || userChoice > 3) {
+						throw new Exception();
+					}
+					break;
+				}
+				catch(Exception e) {
+					System.out.println("Invalid Entry.");
+					scan.nextLine();
+				}
 			}
 		}
 	}
@@ -370,7 +362,7 @@ public class Level {
 				lvlEnemies.remove(0);
 			}
 			else if (lvlEnemies.get(0) == 4) {
-				startingBoard.addEnemy(new StaphEnemy());
+				startingBoard.addEnemy(new MeaslesEnemy());
 				lvlEnemies.remove(0);
 			}
 			else if (lvlEnemies.get(0) == 5) {

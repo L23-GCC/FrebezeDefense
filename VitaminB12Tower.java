@@ -7,7 +7,7 @@ public class VitaminB12Tower extends AirTowers{
 		damage = 5;
 		fireDelay = 4;
 		upgradeLevel = 0;
-		name = "B12 Tower";
+		name = "B12Tower";
 		single = true;
 	}
 	
@@ -17,7 +17,7 @@ public class VitaminB12Tower extends AirTowers{
 		damage = 5;
 		fireDelay = 4;
 		upgradeLevel = 0;
-		name = "B12 Tower";
+		name = "B12Tower";
 		single = true;
 	}
 	

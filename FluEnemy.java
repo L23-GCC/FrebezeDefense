@@ -5,7 +5,7 @@ public class FluEnemy extends Enemies {
 		health = 10;
 		fast = false;
 		worth = 5;
-		name = "Influenza";
+		name = "Flu";
 		air = true;
 	}
 }

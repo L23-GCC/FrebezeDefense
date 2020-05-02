@@ -29,7 +29,7 @@ public class GameLoop {
 		
 		Scanner cons = new Scanner(System.in);
 		System.out.println(printMenu());
-		int userChoice = -1;
+		int userChoice;
 		
 		//while loop to ensure the user input is an integer and a valid menu choice.
 		while (true) {
@@ -65,8 +65,10 @@ public class GameLoop {
 			//while loop loops through a single level until player wins or dies.
 			while (!chosenLvls.get(i).getWonStatus()) {
 				chosenLvls.get(i).runWave();
-				//if user dies, decrement i to replay the level user failed on.
-				if(chosenLvls.get(i).getDieStatus()) {
+				if (chosenLvls.get(i).getDieStatus()) {
+					System.out.println("Restarting Level...");
+					int temp = i;
+					chosenLvls.set(i, new Level(levels.get(temp + 1)));
 					i--;
 					break;
 				}
