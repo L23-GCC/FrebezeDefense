@@ -10,7 +10,7 @@ import java.util.Random;
  * This class generates a double array to display the game board. It keeps track of the player's health, currency, currently built towers,
  * the enemies on the board, and any remaining enemies needed for the wave. 
  * This class governs the attack of towers on enemies and updating the board as enemies move and are defeated.
- * @author Levi Conrad, Liam Hillebrand, Thomas St. Jean 
+ * @author Levi Conrad, Liam Hillebrand, Thomas St.Jean 
  *
  */
 public class Board {
