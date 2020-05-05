@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Rapid fire single target ground tower.  Small range, but enemies are liquidated when in proximity.
+ */
 public class HandSanitizerTower extends GroundTowers {
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public HandSanitizerTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 15;
@@ -11,6 +23,9 @@ public class HandSanitizerTower extends GroundTowers {
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public HandSanitizerTower() {
 		cost = 15;
 		range = 1;
@@ -22,6 +37,9 @@ public class HandSanitizerTower extends GroundTowers {
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

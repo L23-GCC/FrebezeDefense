@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Advanced single-target air tower
+ */
 public class AlkaSeltzerTower extends AirTowers {
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public AlkaSeltzerTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 27;
@@ -10,6 +22,9 @@ public class AlkaSeltzerTower extends AirTowers {
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public AlkaSeltzerTower() {
 		super();
 		cost = 27;
@@ -21,6 +36,9 @@ public class AlkaSeltzerTower extends AirTowers {
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

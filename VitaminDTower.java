@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Chain attacking air tower.  Hits multiple enemies with a single shot.
+ */
 public class VitaminDTower extends AirTowers{
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public VitaminDTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 22;
@@ -11,6 +23,9 @@ public class VitaminDTower extends AirTowers{
 		chainEffect = 2;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public VitaminDTower() {
 		cost = 22;
 		range = 2;
@@ -22,6 +37,9 @@ public class VitaminDTower extends AirTowers{
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

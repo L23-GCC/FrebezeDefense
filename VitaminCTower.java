@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Chain attacking ground tower.  Hits multiple enemies with a single shot.
+ */
 public class VitaminCTower extends GroundTowers {
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public VitaminCTower(int x, int y) {
 		super(x, y);
 		cost = 20;
@@ -11,6 +23,9 @@ public class VitaminCTower extends GroundTowers {
 		chainEffect = 2;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public VitaminCTower() {
 		cost = 20;
 		range = 2;
@@ -22,6 +37,9 @@ public class VitaminCTower extends GroundTowers {
 	}
 
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

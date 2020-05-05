@@ -1,5 +1,9 @@
 package towers;
 
+/**
+ * @author Liam Hillebrand
+ * Child class of towers.  Used to categorize air towers.
+ */
 public class AirTowers extends Towers {
 	public AirTowers(int x, int y) {
 		this.posX = x;
@@ -9,7 +13,6 @@ public class AirTowers extends Towers {
 		single = false;
 		AOE = false;
 		chain = false;
-		poison = false;
 	}
 	public AirTowers() {
 		groundTower = false;
@@ -17,6 +20,5 @@ public class AirTowers extends Towers {
 		single = false;
 		AOE = false;
 		chain = false;
-		poison = false;
 	}
 }
