@@ -170,8 +170,15 @@ public class Board {
 										//if number of enemies on board is larger than the chain range, only loop through number of enemies
 										//equal to chain effect length.
 										else {
+											//loops through enemies to apply chain effect.
 											for (int k = 0; k < towersBuilt.get(j).getChainEffect(); k++) {
-												onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+												if (onBoardFoes.size() > (i + k)) {
+													onBoardFoes.get(i + k).takeDamage(towersBuilt.get(j).getDmg());
+												}
+												else {
+													break;
+												}
+												
 											}
 										}
 										towersBuilt.get(j).startDelay(); //start fire delay
