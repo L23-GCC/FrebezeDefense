@@ -4,7 +4,7 @@ CTower
 DTower
 CloroxTower
 HandSanitizerTower
-FrebrezeTower
+FebrezeTower
 5 5 5 5 5 5 Let's just say, things start out "feathery."
 10 5 5 5 5 5 5 5 5 5 5 Flutter flutter, I hope you have some butter.
 5 3 3 3 3 3 The new approaching enemies appear to be mere foot soldiers! You know what to do.
