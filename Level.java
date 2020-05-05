@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -320,7 +321,7 @@ public class Level {
 						}
 						break;
 					}
-					catch (Exception e) {
+					catch (IOException e) {
 						System.out.println(e.getMessage());
 						System.out.println("Please re-enter values:");
 						while (true) {
@@ -332,12 +333,14 @@ public class Level {
 							}
 							catch(Exception e2) {
 								System.out.println("Invalid Entry.");
-								System.out.println(e.getMessage());
+								System.out.println(e2.getMessage());
 								scan.nextLine();
 							}
 							break;
 						}
-						break;
+					}
+					catch(Exception e) {
+						System.out.println(e.getMessage());
 					}
 				}
 			}
