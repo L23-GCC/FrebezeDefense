@@ -7,6 +7,10 @@ import java.util.concurrent.TimeUnit;
 import enemies.*;
 import towers.*;
 
+/**
+ * This class deals with setting up levels including maps, enemies, towers, and so on
+ * @author Thomas St.Jean, Levi Conrad, Liam Hillebrand
+ */
 public class Level {
 	private final int numWaves = 10;
 	private int curWave;
@@ -17,9 +21,14 @@ public class Level {
 	private int[] enemiesPerWave; //Stores how many enemies are to be released from lvlEnemies per wave
 	private boolean didYouWin = false;
 	private boolean didYouDie = false;
-
+	/**
+	 * This constructor takes all the info stored in a text file (L1, L2, L3, L4, & L5) and converts it into the necessary class
+	 * members required to play the game
+	 * @param fileName - Takes in a file that contains all level information
+	 * @throws FileNotFoundException
+	 */
 	public Level(String fileName) throws FileNotFoundException {
-		enemiesPerWave = new int[10];
+		enemiesPerWave = new int[10];	//Size ten because there are 10 waves per level
 		curWave = 1;
 		lvlEnemies = new ArrayList<>();
 		buildableTowers = new ArrayList<>();
@@ -32,7 +41,7 @@ public class Level {
 			buildableTowers.add(fileScan.nextLine());
 		}
 		
-		for (int i = 0; i < numWaves; i++) {
+		for (int i = 0; i < numWaves; i++) {	//adding enemies and wave hints to their respective arrayLists
 			waveHints.add(new ArrayList<>());
 			String line = fileScan.nextLine();
 			Scanner lineScan = new Scanner(line);
@@ -46,6 +55,7 @@ public class Level {
 					waveHints.get(i).add(lineScan.next());
 				}
 			}
+			lineScan.close();
 		}
 		
 		int width = Integer.parseInt(fileScan.nextLine());
@@ -60,13 +70,15 @@ public class Level {
 		startingBoard = new Board(map.toString(), width, height); 
 		fileScan.close();
 	}
-	
+	/**
+	 * This method times the release of enemies onto the board, as well as determining whether the player has died, or if they won
+	 * @throws InterruptedException - Exception thrown due to forcing the program to pause in order to aid the user's viewing of the game
+	 */
 	public void runWave() throws InterruptedException {
-		updateTowers();
+		updateTowers();		//deals w/ building and upgrading towers
 		fillWaveEnemies();
 		
 		boolean keepLoop = true;
-		boolean hasLost = false;
 		int count = 2;
 		
 		System.out.println(printBoard());
@@ -81,21 +93,20 @@ public class Level {
 			System.out.println(startingBoard.toString());
 			if (startingBoard.getPlayerHealth() <= 0) {
 				keepLoop = false;
-				hasLost = true;
+				didYouDie = true;
 			}
 			
-			if (startingBoard.getOnBoardFoes().size() == 0 && startingBoard.getFoes().size() == 0) {
+			if (startingBoard.getOnBoardFoes().size() == 0 && startingBoard.getFoes().size() == 0) { //wave win condition
 				keepLoop = false;
 			}
 			count++;
 		}
 		
-		if (hasLost) {
+		if (didYouDie) {
 			System.out.println("You has died.");
-			didYouDie = true;
 		}
 		else {
-			if (curWave == 10) {
+			if (curWave == 10) {	//10 waves per level, therefore at the end of the 10th wave, the level is won
 				didYouWin = true;
 				System.out.println("Level Complete");
 			}
@@ -103,7 +114,10 @@ public class Level {
 			System.out.println("Wave Complete!");
 		}
 	}
-	
+	/**
+	 * Converts Strings from buildableTowers to Towers, and adds them to another ArrayList
+	 * @param t - an ArrayList to which Towers are added
+	 */
 	public void convert(ArrayList<Towers> t) {
 		
 		for(int i = 0; i < buildableTowers.size(); i++) {
@@ -146,15 +160,18 @@ public class Level {
 			}
 		}
 	}
-	
+	/**
+	 * a toString that prints out tower stats in a table
+	 * @return
+	 */
 	public String towerInfo() {
 		StringBuilder sb = new StringBuilder();
 		ArrayList<Towers> allTowers = new ArrayList<>();
 		convert(allTowers);
 		
-		sb.append("     Type      |  Cost  |  Damage  |  Range  | Rate of Fire |         Type");
+		sb.append("     Name      |  Cost  |  Damage  |  Range  |  Fire Delay  |         Type");
 		int max = 0;
-		for(int i = 0; i < buildableTowers.size(); i++) {
+		for(int i = 0; i < buildableTowers.size(); i++) { //Finds the largest tower name and adjusts spacing accordingly
 			for(int j = 0; j < buildableTowers.size(); j++) {
 				if(i != j && max < buildableTowers.get(i).length()) {
 					max = Math.max(buildableTowers.get(i).length(), buildableTowers.get(j).length());
@@ -162,9 +179,12 @@ public class Level {
 			}
 		}
 		for (int i = 0; i < allTowers.size(); i++) {
-			sb.append("\n===================================================================================\n");
+			sb.append("\n========================================================================================\n");
 			sb.append(allTowers.get(i).getName());
-			for(int j = 0; j < max - buildableTowers.get(i).length(); j++) {
+			for(int j = 0; j <= max - buildableTowers.get(i).length(); j++) {
+				if(max == buildableTowers.get(i).length()) {	//No spaces added if tower has longest name
+					break;
+				}
 				sb.append(" ");
 			}
 			sb.append("|   " + allTowers.get(i).getCost() + "   |");
@@ -189,7 +209,9 @@ public class Level {
 		return sb.toString();
 	
 	}
-	
+	/**
+	 * @return - toString that prints out all towers on the board, making it easy for the user to upgrade them 
+	 */
 	public String printUpgradeTowers() {
 		StringBuilder sb = new StringBuilder();
 		
@@ -200,7 +222,9 @@ public class Level {
 		}
 		return sb.toString();
 	}
-	
+	/**
+	 * @return - A menu that the user chooses from before each wave, printing out current health and wealth of user
+	 */
 	public String menu() {
 		StringBuilder options = new StringBuilder();
 		
@@ -213,6 +237,10 @@ public class Level {
 				+ "\n	(3) - Run Wave");
 		return options.toString();
 	}
+	/**
+	 * Deals with all changes made by the user regarding towers including building, upgrading, and printing out tower info
+	 * Has the most exception catching because almost all user input is done here
+	 */
 	private void updateTowers() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println(printBoard());
@@ -220,7 +248,7 @@ public class Level {
 		System.out.println(menu());
 		int userChoice;
 		
-		while (true) {
+		while (true) { //error catching
 			try {
 				userChoice = scan.nextInt();
 				if (userChoice < 0 || userChoice > 3) {
@@ -234,7 +262,7 @@ public class Level {
 			}
 		}
 
-		while (userChoice != 3) {
+		while (userChoice != 3) {	//while user chooses not to run wave
 			if (userChoice == 0) {
 				System.out.println(buildableTowers);
 				System.out.println("Enter int for chosen tower, x coordinate, and y coordinate.");
@@ -357,14 +385,13 @@ public class Level {
 				}
 			}
 		}
+		scan.close();
 	}
-	
 	/**
-	 * fix enemies constructor
-	 * @param waveNum
+	 * This method adds enemies to the board according to the wave
 	 */
 	private void fillWaveEnemies() {
-		for (int i = 0; i < enemiesPerWave[curWave - 1]; i++) {
+		for (int i = 0; i < enemiesPerWave[curWave - 1]; i++) {	//each enemy added to startingBoard and removed from lvlEnemies
 			if (lvlEnemies.get(0) == 1) {
 				startingBoard.addEnemy(new EColiEnemy());
 				lvlEnemies.remove(0);
@@ -391,34 +418,44 @@ public class Level {
 			}
 		}
 	}
-	
+	/**
+	 * @return - toString for the board
+	 */
 	public String printBoard() {
 		return startingBoard.toString();
 	}
-	
+	@Override
 	public String toString() {
 		StringBuilder lvl = new StringBuilder();
 		lvl.append("Available Towers" + buildableTowers.toString() + "\n");
 		lvl.append("Current Wave: " + curWave);
 		return lvl.toString();
 	}
-	
+	/**
+	 * @return - If the player won
+	 */
 	public boolean getWonStatus() {
 		return didYouWin;
 	}
-	
+	/**
+	 * @return - Which wave it is
+	 */
 	public int getCurWave() {
 		return curWave;
 	}
-	
+	/**
+	 * @return - If the player died
+	 */
 	public boolean getDieStatus() {
 		return didYouDie;
 	}
-	
+	/**
+	 * @return - toString for the wave hints in each Level file
+	 */
 	private String printWaveHints() {
 		StringBuilder hints = new StringBuilder();
 		for (int i = 0; i < waveHints.get(curWave - 1).size(); i++) {
-			if (waveHints.get(curWave - 1).get(i).equals("poop")) {
+			if (waveHints.get(curWave - 1).get(i).equals("poop")) { //For some reason, putting \n in the text file did not make a new line
 				hints.append("\n");
 			}
 			else {
