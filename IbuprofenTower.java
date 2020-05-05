@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Basic single-targeting ground tower.
+ */
 public class IbuprofenTower extends GroundTowers{
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public IbuprofenTower(int posX, int posY){
 		super(posX, posY);
 		cost = 10;
@@ -11,6 +23,9 @@ public class IbuprofenTower extends GroundTowers{
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public IbuprofenTower() {
 		cost = 10;
 		range = 3;
@@ -20,13 +35,11 @@ public class IbuprofenTower extends GroundTowers{
 		name = "Ibuprofen Tower";
 		single = true;
 	}
-	//Conceptual Design of what upgrades might look like.
-	//Three upgrades per tower to reach final form.
-	//Upgrade 1: Increases damage and range.
-	//Upgrade 2: Increases range.
-	//Upgrade 3: Increases ROF and damage.
-	//How cost works TBD
+
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

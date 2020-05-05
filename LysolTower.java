@@ -1,7 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Catapult single-target ground tower.  Slow, but high damage.
+ */
 public class LysolTower extends GroundTowers {
 	
-	//Like a catapult, fires hard shots with long range, but slow rate of fire.
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public LysolTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 30;
@@ -12,6 +22,9 @@ public class LysolTower extends GroundTowers {
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public LysolTower() {
 		cost = 30;
 		range = 4;
@@ -22,6 +35,9 @@ public class LysolTower extends GroundTowers {
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

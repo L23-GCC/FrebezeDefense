@@ -1,4 +1,9 @@
 package towers;
+
+/**
+ * @author Liam Hillebrand
+ * Child class of towers.  Used to categorize ground towers.
+ */
 public class GroundTowers extends Towers{
 	
 	public GroundTowers(int posX, int posY) {
@@ -9,7 +14,6 @@ public class GroundTowers extends Towers{
 		single = false;
 		AOE = false;
 		chain = false;
-		poison = false;
 	}
 	
 	public GroundTowers() {
@@ -18,6 +22,5 @@ public class GroundTowers extends Towers{
 		single = false;
 		AOE = false;
 		chain = false;
-		poison = false;
 	}
 }

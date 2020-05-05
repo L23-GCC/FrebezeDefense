@@ -1,6 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Rapid fire single target air tower.  Small range, but enemies are liquidated when in proximity.
+ */
 public class VaccineTower extends AirTowers{
 	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public VaccineTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 15;
@@ -11,6 +22,9 @@ public class VaccineTower extends AirTowers{
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public VaccineTower() {
 		cost = 15;
 		range = 1;
@@ -21,6 +35,9 @@ public class VaccineTower extends AirTowers{
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

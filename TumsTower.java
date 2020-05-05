@@ -1,7 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Advanced single-target ground tower.
+ */
 public class TumsTower extends GroundTowers {
 	
-	//This is the strong and overall better version of IbuprofenTower
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public TumsTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 25;
@@ -12,6 +22,9 @@ public class TumsTower extends GroundTowers {
 		single = true;
 	}
 
+	/**
+	 * Default constructor
+	 */
 	public TumsTower() {
 		cost = 25;
 		range = 3;
@@ -22,6 +35,9 @@ public class TumsTower extends GroundTowers {
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

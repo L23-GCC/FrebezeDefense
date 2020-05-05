@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Basic single-targeting air tower.
+ */
 public class VitaminB12Tower extends AirTowers{
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public VitaminB12Tower(int posX, int posY) {
 		super(posX, posY);
 		cost = 12;
@@ -11,6 +23,9 @@ public class VitaminB12Tower extends AirTowers{
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public VitaminB12Tower() {
 		cost = 12;
 		range = 3;
@@ -22,6 +37,9 @@ public class VitaminB12Tower extends AirTowers{
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

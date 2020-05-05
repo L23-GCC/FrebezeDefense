@@ -1,5 +1,18 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * The legendary Febreze tower.  Area of Effect type tower,
+ * i.e hits both air and ground enemies within its entire range.
+ */
 public class FebrezeTower extends HybridTowers {
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public FebrezeTower(int x, int y) {
 		super(x, y);
 		cost = 20;
@@ -11,17 +24,23 @@ public class FebrezeTower extends HybridTowers {
 		AOE = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public FebrezeTower() {
 		cost = 20;
 		range = 3;
 		damage = 5;
 		fireDelay = 4;
 		upgradeLevel = 0;
-		name = "Frebreze Tower";
+		name = "Febreze Tower";
 		AOE = true;
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		

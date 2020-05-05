@@ -1,5 +1,17 @@
 package towers;
+
+/**
+ * @author Liam and Tom
+ * Catapult single-target air tower.  Slow, but high damage.
+ */
 public class ProbioticTower extends AirTowers{
+	
+	/**
+	 * Constructor for placing tower on board.
+	 * Outlines the towers various statistics.
+	 * @param posX is the towers x position.
+	 * @param posY is the towers y position.
+	 */
 	public ProbioticTower(int posX, int posY) {
 		super(posX, posY);
 		cost = 32;
@@ -10,6 +22,9 @@ public class ProbioticTower extends AirTowers{
 		single = true;
 	}
 	
+	/**
+	 * Default constructor
+	 */
 	public ProbioticTower() {
 		cost = 32;
 		range = 4;
@@ -20,6 +35,9 @@ public class ProbioticTower extends AirTowers{
 	}
 	
 	@Override
+	/**
+	 * List of upgrades
+	 */
 	public void upgrade() {
 		super.upgrade();
 		
