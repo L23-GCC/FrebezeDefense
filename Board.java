@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -284,7 +285,7 @@ public class Board {
 		}
 		//if coordinates of tower are not a valid building location.
 		else if (getBoardIndex(tower.getPosX(), tower.getPosY()) != '+') {
-			throw new Exception("Cannot build a tower there");
+			throw new IOException("Cannot build a tower there");
 		}
 		board[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0); //put char symbolizing tower on chosen board location.
 		boardTemplate[tower.getPosX()][tower.getPosY()] = tower.getName().charAt(0); //update boardTemplate with tower char.
