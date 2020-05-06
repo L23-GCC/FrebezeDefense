@@ -191,15 +191,16 @@ public class Level {
 					"    |      " + allTowers.get(i).getFireDelay() + "       | ");
 			
 			if (allTowers.get(i).getAir()) {
-				sb.append("Air Tower - " + allTowers.get(i).attackType());
+				if(allTowers.get(i).getName().equals("Febreze Tower")) {
+					sb.append("Hybrid Tower - " + allTowers.get(i).attackType());
+				}
+				else {
+					sb.append("Air Tower - " + allTowers.get(i).attackType());
+				}
 			}
 			else if(allTowers.get(i).getGround()) {
 				sb.append("Ground Tower - " + allTowers.get(i).attackType());
 			}
-			else {
-				sb.append("Hybrid Tower - " + allTowers.get(i).attackType());
-			}
-			
 		}
 		return sb.toString();
 	}
