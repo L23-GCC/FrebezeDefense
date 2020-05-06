@@ -170,27 +170,21 @@ public class Level {
 		ArrayList<Towers> allTowers = new ArrayList<>();
 		convert(allTowers);
 		
-		sb.append("     Name      |  Cost  |  Damage  |  Range  |  Fire Delay  |         Type");
-		int max = 0;
-		for(int i = 0; i < buildableTowers.size(); i++) { //Finds the largest tower name and adjusts spacing accordingly
-			for(int j = 0; j < buildableTowers.size(); j++) {
-				if(i != j && max < buildableTowers.get(i).length()) {
-					max = Math.max(buildableTowers.get(i).length(), buildableTowers.get(j).length());
-				}
-			}
-		}
+		sb.append("      Name       |  Cost  |  Damage  |  Range  |  Fire Delay  |         Type");
+		int max = 17; //Largest tower name length
+		
 		for (int i = 0; i < allTowers.size(); i++) {
-			sb.append("\n========================================================================================\n");
+			sb.append("\n=====================================================================================\n");
 			sb.append(allTowers.get(i).getName());
-			for(int j = 0; j <= max - buildableTowers.get(i).length(); j++) {
-				if(max == buildableTowers.get(i).length()) {	//No spaces added if tower has longest name
-					break;
-				}
+			for(int j = 0; j < max - allTowers.get(i).getName().length(); j++) { //Spaces added according to length of tower name
 				sb.append(" ");
 			}
 			sb.append("|   " + allTowers.get(i).getCost() + "   |");
-			for(int j = 0; j < (5 - (allTowers.get(i).getDmg() / 10)); j++) {
-				sb.append(" ");
+			if(allTowers.get(i).getDmg() < 10) {
+				sb.append("     ");
+			}
+			else {
+				sb.append("    ");
 			}
 					
 			sb.append(allTowers.get(i).getDmg() + "    |    " + allTowers.get(i).getRange() + 
@@ -208,7 +202,6 @@ public class Level {
 			
 		}
 		return sb.toString();
-	
 	}
 	/**
 	 * @return - toString that prints out all towers on the board, making it easy for the user to upgrade them 
